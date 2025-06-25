@@ -1,4 +1,5 @@
 async function loadPage() {
+  let currentPage = ""; // Variable für die aktuelle Seite
   const hash = location.hash.replace("#", "") || "home";
   const sites = ["home", "game", "newgame", "info", "categories"];
   if (!sites.includes(hash)) {
@@ -6,6 +7,11 @@ async function loadPage() {
     PageNotFound();
     return;
   }
+  if (hash === currentPage) {
+    console.log("Seite bereits geladen:", hash);
+    return;
+  }
+  currentPage = hash; // Aktuelle Seite aktualisieren
   const pagePath = `sites/${hash}.html`;
   const scriptPath = `sites/${hash}.js`;
   console.log("Lade Seite:", pagePath);
@@ -25,7 +31,6 @@ async function loadPage() {
   const script = document.createElement('script');
   script.src = scriptPath;
   script.id = "dynamic-script"; // <- wichtig!
-  script.type = "module"; // optional, wenn du moderne JS-Module verwendest
   document.body.appendChild(script);
   
   console.log("Script geladen:", scriptPath);
