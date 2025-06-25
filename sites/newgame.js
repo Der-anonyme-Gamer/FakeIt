@@ -237,20 +237,22 @@
 // }
 
 // DOM-Elemente
-const btnAddPlayer = document.getElementById("addPlayer");
-const btnAddImpostor = document.getElementById("addImpostor");
-const btnRemoveImpostor = document.getElementById("removeImpostor");
-const playerList = document.getElementById("playerList");
-const startButton = document.getElementById("startGame");
-const btnMoreTime = document.getElementById("moreTime");
-const btnLessTime = document.getElementById("lessTime");
-const playerNameInput = document.getElementById("playerName");
-const categoryPopup = document.getElementById("categoryPopup");
-const categoryList = document.getElementById("categoryList");
-const errorPopup = document.getElementById("errorPopup");
-const errorMessage = document.getElementById("errorMessage");
-const selectCategoriesBtn = document.getElementById("selectCategoriesBtn");
-const selectedCategoriesText = document.getElementById("selectedCategoriesText");
+
+
+let btnAddPlayer = document.getElementById("addPlayer");
+let btnAddImpostor = document.getElementById("addImpostor");
+let btnRemoveImpostor = document.getElementById("removeImpostor");
+let playerList = document.getElementById("playerList");
+let startButton = document.getElementById("startGame");
+let btnMoreTime = document.getElementById("moreTime");
+let btnLessTime = document.getElementById("lessTime");
+let playerNameInput = document.getElementById("playerName");
+let categoryPopup = document.getElementById("categoryPopup");
+let categoryList = document.getElementById("categoryList");
+let errorPopup = document.getElementById("errorPopup");
+let errorMessage = document.getElementById("errorMessage");
+let selectCategoriesBtn = document.getElementById("selectCategoriesBtn");
+let selectedCategoriesText = document.getElementById("selectedCategoriesText");
 
 // Spielvariablen
 let currentTime = 420; // 7 Minuten (7*60)
@@ -581,11 +583,9 @@ function startGame() {
     selectedCategories.forEach(cat => {
         // Hier würden wir die Wörter aus dem Speicher laden
         // Für das Beispiel nehmen wir Testdaten
-        const words = [
-            { word: "Testwort 1", hints: ["Hinweis 1"] },
-            { word: "Testwort 2", hints: ["Hinweis 2"] }
-        ];
-        allWords.push(...words);
+        cat.words.forEach(word => {
+            allWords.push({ word: word, hints: word.hints || [] });
+        });
     });
     // Zufälliges Wort auswählen
     const randomWordIndex = Math.floor(Math.random() * allWords.length);
