@@ -1,0 +1,209 @@
+[
+  {
+    "id": -1,
+    "name": "Berufe",
+    "isDefault": true,
+    "words": [
+      {
+        "word": "Archäologe",
+        "hints": [
+          "Stratigrafie",
+          "Grabungsstätte",
+          "Artefaktanalyse",
+          "Erdschichten",
+          "Epoche"
+        ]
+      },
+      {
+        "word": "Kryptograf",
+        "hints": [
+          "Public Key",
+          "Zahlentheorie",
+          "Elliptische Kurve",
+          "AES",
+          "Entropie"
+        ]
+      },
+      {
+        "word": "Forensiker",
+        "hints": [
+          "Ballistik",
+          "Blutspurenmuster",
+          "Tatortrekonstruktion",
+          "DNA-Profiling",
+          "Kriminalbiologie"
+        ]
+      },
+      {
+        "word": "Astrophysiker",
+        "hints": [
+          "Singularität",
+          "Quantenfeldtheorie",
+          "Rotverschiebung",
+          "Kosmische Strahlung",
+          "Hubble-Konstante"
+        ]
+      },
+      {
+        "word": "Paläontologe",
+        "hints": [
+          "Trilobit",
+          "Perm-Zeit",
+          "Ammonit",
+          "Erdzeitalter",
+          "Knochenplatte"
+        ]
+      },
+      {
+        "word": "Ethnologe",
+        "hints": [
+          "Sozialstruktur",
+          "Ritualanalyse",
+          "Feldnotizen",
+          "Verwandtschaftssystem",
+          "Ethnografie"
+        ]
+      },
+      {
+        "word": "Kartograf",
+        "hints": [
+          "Isolinien",
+          "Projektion",
+          "Legende",
+          "Geodäsie",
+          "Atlas"
+        ]
+      },
+      {
+        "word": "Notar",
+        "hints": [
+          "Beurkundung",
+          "Urkundsperson",
+          "Rechtskraft",
+          "Öffentliche Beglaubigung",
+          "Formvorschrift"
+        ]
+      },
+      {
+        "word": "Mediator",
+        "hints": [
+          "Allparteilichkeit",
+          "Deeskalation",
+          "Verhandlungstechnik",
+          "Konfliktdynamik",
+          "Konsensfindung"
+        ]
+      },
+      {
+        "word": "Gerichtsvollzieher",
+        "hints": [
+          "Zwangsmaßnahme",
+          "Vollstreckungsauftrag",
+          "Titelzustellung",
+          "Pfändungsprotokoll",
+          "Amtszwang"
+        ]
+      },
+      {
+        "word": "Vulkanologe",
+        "hints": [
+          "Tektonik",
+          "Plinianisch",
+          "Seismograf",
+          "Basaltlava",
+          "Magmakammer"
+        ]
+      },
+      {
+        "word": "Toxikologe",
+        "hints": [
+          "LD50",
+          "Metabolisierung",
+          "Expositionsweg",
+          "Kumulation",
+          "Antidot"
+        ]
+      },
+      {
+        "word": "Osteopath",
+        "hints": [
+          "Faszientherapie",
+          "Palpation",
+          "Mobilisation",
+          "Körperstatik",
+          "Eigenregulation"
+        ]
+      },
+      {
+        "word": "Imker",
+        "hints": [
+          "Apis mellifera",
+          "Schwarmkontrolle",
+          "Brutpflege",
+          "Pollenhöschen",
+          "Rähmchen"
+        ]
+      },
+      {
+        "word": "Meteorologe",
+        "hints": [
+          "Barometrischer Druck",
+          "Advektion",
+          "Isobaren",
+          "Synoptik",
+          "Zyklonal"
+        ]
+      },
+      {
+        "word": "Restaurator",
+        "hints": [
+          "Substanzanalyse",
+          "Schichtenfreilegung",
+          "Originalsubstanz",
+          "Reversibilität",
+          "Konservierung"
+        ]
+      },
+      {
+        "word": "Pathologe",
+        "hints": [
+          "Histologie",
+          "Makroskopie",
+          "Obduktionsbericht",
+          "Gewebeschnitt",
+          "Pathogenese"
+        ]
+      },
+      {
+        "word": "Psychiater",
+        "hints": [
+          "DSM-5",
+          "Psychopharmaka",
+          "Affektive Störung",
+          "Anamnese",
+          "Neurotransmitter"
+        ]
+      },
+      {
+        "word": "Kriminologe",
+        "hints": [
+          "Delinquenz",
+          "Täterprofil",
+          "Kriminalstatistik",
+          "Sozialabweichung",
+          "Motivlage"
+        ]
+      },
+      {
+        "word": "Pilot",
+        "hints": [
+          "IFR",
+          "Flugplan",
+          "Avionik",
+          "Triebwerksstart",
+          "Kurskorrektur"
+        ]
+      }
+    ]
+  }
+]

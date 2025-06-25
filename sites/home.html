@@ -1,0 +1,90 @@
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* kein Scrollen */
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+  }
+
+  .scale-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+
+
+  .fakeit-card {
+    background-color: #222831;
+    border-radius: 10px;
+    position: relative;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.);
+    padding: 20px;
+    max-width: 95vw;
+    max-height: 95vh;
+    text-align: center;
+    transform-origin: center center;
+    transition: transform 0.2s ease;
+  }
+
+  .start-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    filter: brightness(1.2);
+  }
+  
+
+  .fakeit-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .info-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.1));
+        }
+  .highlight {
+            color: #00ADB5;
+            text-shadow: 0 0 10px rgba(0, 173, 181, 0.5);
+            font-weight: 600;
+        }
+
+  @media (max-height: 600px), (max-width: 400px) {
+    .fakeit-card {
+      transform: scale(0.95);
+    }
+    .start-icon {
+      width: 80px !important;
+      height: 80px !important;
+    }
+  }
+</style>
+
+<div class="scale-container">
+  <div class="fakeit-card">
+    <h1 class="mb-3" style="text-align: start;">Welcome to <span class="highlight">FakeIt</span></h1>
+    <img src="assets/frage2.png" style="width: 30px; height: 30px;" class="info-icon" onclick="window.location.href='/#info'">
+    <img src="../icons/main.png" alt="FakeIt Logo" class="fakeit-logo" >
+    <br>
+    <img src="assets/start2.png" alt="Start Icon" class="start-icon mt-3" style="width: 100px; height: 100px; " onclick="window.location.href='#newgame'">
+  </div>
+</div>

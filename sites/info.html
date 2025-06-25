@@ -1,0 +1,401 @@
+<style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scale-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            
+        }
+
+        .fakeit-card {
+            position: relative;
+            background: linear-gradient(145deg, #1e2229, #2a313a);
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            padding: 30px 25px 25px;
+            text-align: left;
+            width: 100%;
+            max-width: 95vw;
+
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+        }
+
+        .info-icon:hover {
+            transform: rotate(360deg);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        }
+
+        .highlight {
+            color: #00ADB5;
+            text-shadow: 0 0 10px rgba(0, 173, 181, 0.5);
+            font-weight: 700;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #00ADB5;
+        }
+
+        .info-header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            flex-grow: 1;
+        }
+
+        .info-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Scrollbar Styling */
+        .info-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .info-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .info-content::-webkit-scrollbar-thumb {
+            background: #00ADB5;
+            border-radius: 4px;
+        }
+
+        .info-content::-webkit-scrollbar-thumb:hover {
+            background: #00d4e0;
+        }
+
+        .section-title {
+            color: #00ADB5;
+            font-size: 1.6rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .how-to-play {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #00ADB5;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0, 173, 181, 0.5);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 173, 181, 0.1);
+        }
+
+        .icon-preview {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 8px;
+            object-fit: contain;
+        }
+
+        .icon-name {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .icon-creator {
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .back-btn {
+            background: #00ADB5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            align-self: center;
+            box-shadow: 0 0 10px rgba(0, 173, 181, 0.3);
+        }
+
+        .back-btn:hover {
+            background: #00d4e0;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .fakeit-card {
+                max-height: 85vh;
+                padding: 25px 20px 20px;
+            }
+
+            .info-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fakeit-card {
+                padding: 20px 15px 15px;
+            }
+
+            .info-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .icon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+
+
+<body>
+    <div class="scale-container">
+        <div class="fakeit-card">
+
+
+            <div class="info-header">
+                <h1>About <span class="highlight">FakeIt</span></h1>
+            </div>
+
+            <div class="info-content">
+                <div class="section-title">How to Play</div>
+                <div class="how-to-play">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Role Assignment</strong>
+                            <p>At the start of the game, each player is secretly assigned a role - either an Impostor or
+                                a Crewmate.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Game Rounds</strong>
+                            <p>Crewmates complete tasks to win, while Impostors try to eliminate Crewmates without being
+                                caught.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Meetings</strong>
+                            <p>When a body is reported or an emergency meeting is called, players discuss to find the
+                                Impostor.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Voting</strong>
+                            <p>Players vote to eject who they believe is the Impostor. Majority vote decides who gets
+                                ejected.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <strong>Win Conditions</strong>
+                            <p>Crewmates win by completing all tasks or ejecting all Impostors. Impostors win by
+                                eliminating enough Crewmates.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Icon Attribution</div>
+                <p>All icons used in FakeIt are sourced from Flaticon and created by talented designers:</p>
+
+                <div class="icon-grid">
+
+                    <div class="icon-item">
+                        <img src="assets/start2.png" alt="Start Icon" class="icon-preview">
+                        <div class="icon-name">Play Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/judanna"
+                                target="_blank">judanna</a></div>
+                    </div>
+
+                    <div class="icon-item">
+                        <img src="assets/frage2.png" alt="Info Icon" class="icon-preview">
+                        <div class="icon-name">Information Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/pixel-perfect"
+                                target="_blank">Pixel Perfect</a></div>
+                    </div>
+
+
+                    <div class="icon-item">
+                        <img src="assets/start-btn2.png" alt="Start Button" class="icon-preview">
+                        <div class="icon-name">Start Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/freepik" target="_blank">Freepik</a></div>
+                    </div>
+
+
+                    <div class="icon-item">
+                        <img src="assets/add2.png" alt="Plus Icon" class="icon-preview">
+                        <div class="icon-name">Increase Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/deha21" target="_blank">deha21</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/minus2.png" alt="Minus Icon" class="icon-preview">
+                        <div class="icon-name">Decrease Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/ilham-fitrotul-hayat" target="_blank">Ilham Fitrotul Hayat</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/delete.png" alt="Delete Icon" class="icon-preview">
+                        <div class="icon-name">Delete Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/feen" target="_blank">Feen</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/impostor.png" alt="Impostor Icon" class="icon-preview">
+                        <div class="icon-name">Impostor Icon</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/freepik" target="_blank">Freepik</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/crew.png" alt="Crewmate Icon" class="icon-preview">
+                        <div class="icon-name">Crewmate Icon</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/ilham-fitrotul-hayat" target="_blank">Ilham Fitrotul Hayat</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/next2.png" alt="Next Icon" class="icon-preview">
+                        <div class="icon-name">Next Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/pixa-icons" target="_blank">Pixa_icons</a></div>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/check.png" alt="Finished Icon" class="icon-preview">
+                        <div class="icon-name">Finished Button</div>
+                        <div class="icon-creator">by <a href="https://www.flaticon.com/de/autoren/karacis" target="_blank">Karacis</a></div>
+                    </div>
+                </div>
+
+                <div class="section-title">Copyright Information</div>
+                <p>FakeIt © 2025 All Rights Reserved</p>
+                <p>This game is inspired by the popular social deduction genre but contains original gameplay elements
+                    and design.</p>
+                <p>All game assets including icons, sounds, and images are used under appropriate licenses. The visual
+                    design and game mechanics are proprietary and may not be reproduced without permission.</p>
+            </div>
+
+            <button class="back-btn" onclick="history.back()">Back to Game</button>
+            <br>
+
+            <div class="copyright">
+                Felix Hausmann • Version 1.0.0 • Made with ❤️
+            </div>
+        </div>
+    </div>
+</body>
