@@ -7,21 +7,20 @@
     .info-page {
         width: 100%;
         max-width: 500px;
-        margin: 0 auto;
-        padding: 15px;
+        height: 100%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .info-page .fakeit-card {
         position: relative;
-        background: linear-gradient(145deg, #1e2229, #2a313a);
+        background: linear-gradient(to bottom right, #222831, #1a1e24);
         border-radius: 15px;
         color: #fff;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         padding: 25px 20px 20px;
         text-align: left;
         width: 100%;
-        max-height: 90vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
     }
@@ -207,7 +206,7 @@
 
     @media (max-height: 700px) {
         .info-page .fakeit-card {
-            max-height: 95vh;
+            padding: 15px 15px 10px;
         }
     }
 
@@ -343,7 +342,7 @@
             </div>
 
             <div class="section-title">Copyright & Lizenz</div>
-            <p class="info-text">Copyright 2025-<script>document.write( new Date().getFullYear() );</script> Felix Hausmann</p>
+            <p class="info-text">Copyright 2025-<span class="year"></span> Felix Hausmann</p>
             <p class="info-text">Dieses Spiel ist vom beliebten Social-Deduction-Genre inspiriert, enthält aber eigene Spielelemente und ein eigenes Design.</p>
             <p class="info-text">Der Code dieser App und die wesentlichen Spiel-Mechaniken sind unter der
                 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>
@@ -355,7 +354,11 @@
         <button class="back-btn" onclick="window.location.hash='#home'">Zurück</button>
 
         <div class="copyright">
-            © 2025-<script>document.write( new Date().getFullYear() );</script> Felix Hausmann • Version 2.0.0
+            © 2025-<span class="year"></span> Felix Hausmann • Version 2.0.0
         </div>
+        <script>
+            // Dynamisch das aktuelle Jahr in der Copyright-Anzeige setzen
+            document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+        </script>
     </div>
 </div>

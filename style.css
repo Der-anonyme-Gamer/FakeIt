@@ -1,10 +1,12 @@
- body {
+body {
     margin: 0;
     height: 100vh;
+    height: 100dvh;
     font-family: sans-serif;
     background: #f3f3f3;
     color: #333;
     user-select: none;
+    overflow: hidden;
   }
 
 header {
@@ -20,9 +22,12 @@ nav a {
 }
 
 main {
-  /*padding: 1rem;*/
+  display: flex;
+  justify-content: center;
   align-items: center;
-    display: flex;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
 }
 
 .appname:hover {
@@ -32,15 +37,10 @@ main {
 
 .contentHolder {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    color: #333;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    min-height: max-content;
+    align-items: center;
     width: 100%;
-    max-width: 95vw;
+    height: 100%;
+    padding: 60px 10px;
+    box-sizing: border-box;
 }
-
-

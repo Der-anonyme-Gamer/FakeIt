@@ -1,139 +1,43 @@
-# 🎭 FakeIt — The Impostor Party Game
+# FakeIt
 
-**FakeIt** ist ein schnelles, lustiges Party- und Gruppenspiel, bei dem ein Spieler ein geheimer **Impostor** ist und versucht, nicht aufzufallen.
+**FakeIt** ist ein Social-Deduction-Partyspiel als Progressive Web App (PWA). Inspiriert von Spielen wie *Spyfall* und *Among Us* versuchen Crewmates den Impostor zu entlarven, der das geheime Wort nicht kennt.
 
-Perfekt für:
-- 🧑‍🤝‍🧑 Freunde & Partys  
-- 🏫 Schule & Gruppen  
-- 🎉 Spieleabende  
-- 📱 Handy oder Papier  
+<p align="center">
+  <img src="screenshots/start.png" alt="Startbildschirm">
+</p>
 
----
+## Features
 
-## 🧠 Spielidee
+- **Offline spielbar** dank Service Worker und Cache-Strategie
+- **Installierbar** als PWA auf Smartphone und Desktop
+- **13 vorgefertigte Kategorien** mit je 15 Wörtern und Hinweisen
+- **Eigene Kategorien** erstellen, bearbeiten, exportieren und importieren
+- **Flexible Spieloptionen**: Spieleranzahl, Impostor-Anzahl, Spielzeit und Hinweis-System einstellbar
+- **Replay-Funktion**: Direkt mit denselben Spielern eine neue Runde starten
+- **Drag-to-Reveal**: Rollen werden durch Wischgeste aufgedeckt, damit andere nicht mitsehen
 
-Alle Spieler bekommen **ein geheimes Wort** — außer einer Person.
+## Spielablauf
 
-👉 Diese Person ist der **Fake (Impostor)**  
-Sie kennt das Wort **nicht** und muss so tun, als würde sie es kennen.
+1. **Spieler hinzufügen** - Mindestens 3 Spieler, Impostor-Anzahl und Kategorien festlegen
+2. **Rollen ansehen** - Jeder Spieler zieht das Bild nach oben, um seine Rolle zu sehen. Crewmates sehen das geheime Wort, Impostors nicht (oder nur einen vagen Hinweis)
+3. **Diskutieren** - Alle diskutieren reihum ueber das Wort. Crewmates versuchen den Impostor zu entlarven, der Impostor tut so, als kennt er das Wort
+4. **Abstimmen** - Nach Ablauf der Zeit wird abgestimmt, wer der Impostor ist
+5. **Ergebnis** - Die Impostors werden aufgedeckt. Crewmates gewinnen, wenn sie den Impostor finden. Der Impostor gewinnt, wenn er unentdeckt bleibt
+<p align="center">
+    <img src="screenshots/newgame.png" alt="Neues Spiel erstellen" width="300">
+    <img src="screenshots/play.png" alt="Spielen" width="300">
+</p>
 
-Ziel:
-- Normale Spieler: den Fake entlarven  
-- Fake: nicht entdeckt werden  
+## Technologie-Stack
 
----
-
-## 👥 Spieleranzahl
-
-**Minimum:** 3  
-**Empfohlen:** 4–10  
-
----
-
-## 🎮 Spielablauf
-
-### 1️⃣ Vorbereitung
-- Wählt eine Kategorie (z. B. Alltag, Tiere, Trends).
-- Jeder Spieler bekommt ein Wort:
-  - Alle das gleiche
-  - Der Fake bekommt **"FakeIt"** oder ein leeres Feld
-
----
-
-### 2️⃣ Hinweis-Runde
-Reihum sagt jeder Spieler **einen kurzen Hinweis** zum Wort.
-
-Regeln:
-- Nur 1–3 Wörter
-- Nicht zu offensichtlich
-- Nicht zu vage
-
-Beispiel:
-Wort: *Pizza*
-
-Hinweise könnten sein:
-- „Rund“
-- „Käse“
-- „Italien“
-
-Der Fake muss bluffen!
-
----
-
-### 3️⃣ Diskussion
-Alle dürfen kurz diskutieren:
-- Wer wirkt verdächtig?
-- Wer gibt komische Hinweise?
-
----
-
-### 4️⃣ Abstimmung
-Alle stimmen gleichzeitig ab.
-
-➡️ Spieler mit den meisten Stimmen wird aufgedeckt.
-
----
-
-## 🏆 Siegbedingungen
-
-### 👥 Normale Spieler gewinnen:
-Wenn der Fake **richtig entlarvt** wird.
-
-### 🎭 Fake gewinnt:
-Wenn:
-- Er nicht gewählt wird  
-ODER  
-- Er das geheime Wort richtig errät.
-
----
-
-## 🎯 Tipps für gutes Spielen
-
-### Für normale Spieler:
-- Hinweise nicht zu konkret
-- Auf ungewöhnliche Antworten achten
-
-### Für den Fake:
-- Allgemein bleiben
-- Hinweise anderer genau anhören
-- Selbstbewusst wirken
-
----
-
-## 🗂️ Beispiel-Kategorien
-
-- Alltag
-- Rund um die Welt
-- Unterhaltung
-- Tiere & Natur
-- Sport & Freizeit
-- Wissen & Schule
-- Feste & Feiern
-- Trends
-- Stars & Promis
-- Spicy
-- Gaming
-
----
-
-## ⚡ Schnell-Variante (1 Minute pro Runde)
-
-1. Hinweise geben  
-2. Sofort abstimmen  
-3. Kein Diskutieren  
-
-Perfekt für große Gruppen.
-
----
-
-## 🎉 Warum FakeIt Spaß macht
-
-- Sehr leicht zu lernen
-- Keine Vorbereitung nötig
-- Viel Lachen & Diskussion
-- Perfekt für jede Altersgruppe
-
----
+| Bereich | Technologie |
+|---|---|
+| Frontend | Vanilla HTML, CSS, JavaScript |
+| CSS-Framework | Bootstrap 5.3 (CDN) |
+| Routing | Hash-basierte SPA (eigener Router) |
+| State | `sessionStorage` (Spielzustand), `localStorage` (eigene Kategorien) |
+| Offline | Service Worker mit Cache-First-Strategie |
+| Build-Tools | Keine - rein statische Dateien |
 
 ## 💻 Verwendung / Installation
 
@@ -156,6 +60,15 @@ Perfekt für:
 
 ---
 
+### 📱 Als Android-App installieren (Empfohlen)
+
+FakeIt kann als native Android App installiert werden
+
+1. [![Neueste App release herunterladen](https://img.shields.io/github/v/release/der-anonyme-gamer/repo?logo=github)](https://github.com/der-anonyme-gamer/FakeIt/releases/latest)
+2. Installieren und los spielen 
+
+---
+
 ### 📱 Als Android-App installieren (PWA)
 
 FakeIt kann wie eine echte App installiert werden:
@@ -164,10 +77,16 @@ FakeIt kann wie eine echte App installiert werden:
 2. Menü → **"App installieren"** / **"Zum Startbildschirm hinzufügen"**
 3. FakeIt erscheint dann als eigene App
 
-Vorteile:
-- Kein Play-Store nötig
-- Startet im Vollbild
-- Offline spielbar
+---
+
+### 🍎 Als iOS-App installieren (PWA)
+
+Auch auf iPhone und iPad kannst du FakeIt als App nutzen:
+
+1. Spiel im Safari-Browser öffnen
+2. Unten auf **Teilen** tippen (Quadrat mit Pfeil)
+3. **"Zum Home-Bildschirm"** auswählen
+4. FakeIt erscheint als eigenes Icon auf dem Home-Bildschirm
 
 ---
 
@@ -189,39 +108,56 @@ Danach:
 
 ### 📦 Lokale Nutzung (komplett ohne Internet)
 
-Du kannst FakeIt auch lokal starten:
+FakeIt benötigt keinen Build-Prozess. Da die App `fetch()` verwendet, muss sie über einen lokalen Webserver ausgeführt werden:
 
-1. Projekt herunterladen
-2. `index.html` öffnen
+```bash
+# Repository klonen
+git clone https://github.com/dein-benutzername/FakeIt.git
+cd FakeIt
 
-Keine Installation nötig.
+# Mit einem beliebigen lokalen Webserver starten, z.B.:
+
+# Python 3
+python -m http.server 8080
+
+# Node.js (npx)
+npx serve .
+
+# VS Code: "Live Server" Extension verwenden
+```
+
+Dann im Browser oeffnen: `http://localhost:8080`
+
+## Kategorien
+
+Die App enthält 13 vorgefertigte Kategorien:
+
+| Kategorie | Beschreibung |
+|---|---|
+| Einfache Woerter | Alltagsgegenstaende |
+| Rund um die Welt | Sehenswuerdigkeiten & Orte |
+| Unterhaltung | Filme, Spiele, Serien |
+| Alltag | Alltagssituationen |
+| Clash Royale | Karten aus dem Spiel |
+| Tiere & Natur | Tiere und Naturphaenomene |
+| Sport & Freizeit | Sportarten und Aktivitaeten |
+| Wissen & Schule | Schulthemen und Wissenschaft |
+| Feste & Feiern | Feiertage und Anlaesse |
+| Stars und Promis | Beruehmte Persoenlichkeiten |
+| Spicy (Ue18) | Party-Begriffe fuer Erwachsene |
+| Trends | Aktuelle Trends und Technologie |
+| Deutsche Begriffe | Typisch deutsche Konzepte |
+
+**Eigene Kategorien** können über den Kategorienverwaltung erstellt, als JSON exportiert und importiert werden.
+
+## Credits
+
+Alle Icons stammen von [Flaticon](https://www.flaticon.com) und wurden von verschiedenen Designern erstellt. Die vollständige Zuordnung findet sich in der App unter *Info*.
+
+## Lizenz
+
+Dieses Projekt ist unter der **Apache License 2.0** lizenziert. Siehe [LICENSE](LICENSE) fuer Details.
 
 ---
 
-## 🛠️ Systemanforderungen
-
-Sehr gering:
-
-- Jeder moderne Browser
-- Kein Internet nötig nach dem ersten Laden
-- Läuft auf Handy, Tablet und PC
-
----
-
-## 🎯 Ziel der Plattform-Flexibilität
-
-FakeIt soll:
-- schnell startbar sein
-- überall funktionieren
-- ohne Accounts auskommen
-- vollständig offline spielbar bleiben
-
-## 📜 Lizenz / Nutzung
-
-Dieses Spielkonzept kann frei genutzt, verändert und für private oder schulische Zwecke verwendet werden.
-
----
-
-## ❤️ Viel Spaß beim Bluffen!
-
-**FakeIt — Sag etwas… ohne etwas zu wissen.**
+FakeIt &copy; 2025-2026 Felix Hausmann
