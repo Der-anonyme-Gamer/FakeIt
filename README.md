@@ -65,7 +65,7 @@ Perfekt für:
 FakeIt kann als native Android App installiert werden
 
 1. [![Neueste App release herunterladen](https://img.shields.io/github/v/release/Der-anonyme-Gamer/FakeIt?logo=GitHub&label=Latest%20Release)](https://github.com/der-anonyme-gamer/FakeIt/releases/latest)
-2. Installieren und los spielen 
+2. Installieren und losspielen 
 
 ---
 
