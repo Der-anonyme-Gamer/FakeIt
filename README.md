@@ -6,6 +6,12 @@
 
 **FakeIt** ist ein Social-Deduction-Partyspiel als Progressive Web App (PWA). Inspiriert von Spielen wie *Spyfall* und *Among Us* versuchen Crewmates den Impostor zu entlarven, der das geheime Wort nicht kennt.
 
+<p align="center">
+  <img src="screenshots/start.png" alt="Startbildschirm" width="200">
+  <img src="screenshots/newgame.png" alt="Neues Spiel erstellen" width="200">
+  <img src="screenshots/play.png" alt="Spielen" width="200">
+</p>
+
 ## Features
 
 - **Offline spielbar** dank Service Worker und Cache-Strategie
@@ -35,9 +41,76 @@
 | Offline | Service Worker mit Cache-First-Strategie |
 | Build-Tools | Keine - rein statische Dateien |
 
-## Installation & Starten
+## 💻 Verwendung / Installation
 
-FakeIt benoetigt keinen Build-Prozess. Da die App `fetch()` verwendet, muss sie ueber einen lokalen Webserver ausgefuehrt werden:
+FakeIt ist so gestaltet, dass es **ohne Internet** genutzt werden kann und auf fast jedem Gerät läuft.
+
+---
+
+### 🌐 Im Browser (Offline nutzbar)
+
+Du kannst FakeIt einfach im Browser öffnen und danach offline verwenden:
+
+1. Seite einmal online öffnen
+2. Browser-Menü → **"Seite speichern"** oder **"Zum Startbildschirm hinzufügen"**
+3. Danach funktioniert das Spiel auch **ohne Internet**
+
+Perfekt für:
+- Schule
+- Reisen
+- Orte ohne WLAN
+
+---
+
+### 📱 Als Android-App installieren (Empfohlen)
+
+FakeIt kann als native Android App installiert werden
+
+1. [![Neueste App release herunterladen](https://img.shields.io/github/v/release/der-anonyme-gamer/repo?logo=github)](https://github.com/der-anonyme-gamer/fakeit/releases/latest)
+2. Installieren und los spielen 
+
+---
+
+### 📱 Als Android-App installieren (PWA)
+
+FakeIt kann wie eine echte App installiert werden:
+
+1. Spiel im mobilen Browser öffnen (z. B. Chrome)
+2. Menü → **"App installieren"** / **"Zum Startbildschirm hinzufügen"**
+3. FakeIt erscheint dann als eigene App
+
+---
+
+### 🍎 Als iOS-App installieren (PWA)
+
+Auch auf iPhone und iPad kannst du FakeIt als App nutzen:
+
+1. Spiel im Safari-Browser öffnen
+2. Unten auf **Teilen** tippen (Quadrat mit Pfeil)
+3. **"Zum Home-Bildschirm"** auswählen
+4. FakeIt erscheint als eigenes Icon auf dem Home-Bildschirm
+
+---
+
+### 💻 Als Desktop-App installieren
+
+Auch auf PC/Mac kannst du FakeIt als App installieren:
+
+**In Chrome / Edge:**
+1. Spielseite öffnen
+2. In der Adressleiste auf das **Install-Symbol** klicken
+3. "Installieren" auswählen
+
+Danach:
+- Start über Desktop-Icon
+- Eigenes Fenster ohne Browser-UI
+- Offline nutzbar
+
+---
+
+### 📦 Lokale Nutzung (komplett ohne Internet)
+
+FakeIt benötigt keinen Build-Prozess. Da die App `fetch()` verwendet, muss sie über einen lokalen Webserver ausgeführt werden:
 
 ```bash
 # Repository klonen
@@ -57,40 +130,9 @@ npx serve .
 
 Dann im Browser oeffnen: `http://localhost:8080`
 
-**Als PWA installieren:** Im Browser (Chrome/Edge) auf "App installieren" klicken oder ueber "Zum Startbildschirm hinzufuegen" auf dem Smartphone.
-
-## Projektstruktur
-
-```
-FakeIt/
-├── index.html              # SPA-Shell (Einstiegspunkt)
-├── main.js                 # Hash-basierter SPA-Router
-├── style.css               # Globale Styles
-├── manifest.json           # PWA-Manifest
-├── service-worker.js       # Offline-Cache (Cache-First)
-│
-├── sites/                  # Seiten (werden dynamisch geladen)
-│   ├── home.html/js        # Startseite
-│   ├── newgame.html/js     # Spielvorbereitung
-│   ├── game.html/js        # Spielablauf (Rollen, Timer, Ergebnisse)
-│   ├── categories.html/js  # Kategorienverwaltung (CRUD)
-│   ├── info.html/js        # Spielanleitung & Credits
-│   └── pagenotfound.html   # 404-Seite
-│
-├── assets/                 # Spiel-Assets
-│   ├── default_categories.json  # 13 Standard-Kategorien
-│   └── *.png               # UI-Icons (Buttons, Rollen)
-│
-└── icons/                  # PWA-Icons & Favicon
-    ├── android-chrome-192x192.png
-    ├── android-chrome-512x512.png
-    ├── favicon.ico
-    └── main.png            # App-Logo
-```
-
 ## Kategorien
 
-Die App enthaelt 13 vorgefertigte Kategorien:
+Die App enthält 13 vorgefertigte Kategorien:
 
 | Kategorie | Beschreibung |
 |---|---|
@@ -108,11 +150,11 @@ Die App enthaelt 13 vorgefertigte Kategorien:
 | Trends | Aktuelle Trends und Technologie |
 | Deutsche Begriffe | Typisch deutsche Konzepte |
 
-Eigene Kategorien koennen ueber den Kategorienverwaltung erstellt, als JSON exportiert und importiert werden.
+**Eigene Kategorien** können über den Kategorienverwaltung erstellt, als JSON exportiert und importiert werden.
 
 ## Credits
 
-Alle Icons stammen von [Flaticon](https://www.flaticon.com) und wurden von verschiedenen Designern erstellt. Die vollstaendige Zuordnung findet sich in der App unter *Info*.
+Alle Icons stammen von [Flaticon](https://www.flaticon.com) und wurden von verschiedenen Designern erstellt. Die vollständige Zuordnung findet sich in der App unter *Info*.
 
 ## Lizenz
 
