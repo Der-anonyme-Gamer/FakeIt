@@ -1,91 +1,110 @@
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
+  .home-page * {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  .home-page {
+    width: 100%;
+    max-width: 500px;
     height: 100%;
-    overflow: hidden; /* kein Scrollen */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f3f3f3;
-  }
-
-  .scale-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-
-
-  .fakeit-card {
-    background-color: #222831;
-    border-radius: 10px;
+  .home-page .fakeit-card {
+    background: linear-gradient(to bottom right, #222831, #1a1e24);
+    border-radius: 15px;
     position: relative;
     color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.);
-    padding: 20px;
-    max-width: 95vw;
-    max-height: 95vh;
-    text-align: center;
-    transform-origin: center center;
-    transition: transform 0.2s ease;
-  }
-
-  .start-icon:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-    filter: brightness(1.2);
-  }
-  
-
-  .fakeit-logo {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    padding: 30px;
     width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
-  .info-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: transform 0.5s ease;
-            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.1));
-        }
-  .highlight {
-            color: #00ADB5;
-            text-shadow: 0 0 10px rgba(0, 173, 181, 0.5);
-            font-weight: 600;
-        }
+
+  .home-page .fakeit-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+
+  .home-page .highlight {
+    color: #00ADB5;
+    text-shadow: 0 0 15px rgba(0, 173, 181, 0.5);
+    font-weight: 800;
+  }
+
+  .home-page .fakeit-logo {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 40px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .home-page .start-icon {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 173, 181, 0.6));
+  }
+
+  .home-page .start-icon:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 173, 181, 1));
+  }
+
+  .home-page .info-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
+  }
+
+  .home-page .info-icon:hover {
+    transform: scale(1.15);
+  }
+
+  .home-page .version-text {
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0;
+  }
 
   @media (max-height: 600px), (max-width: 400px) {
-    .fakeit-card {
-      transform: scale(0.95);
+    .home-page .fakeit-title {
+      font-size: 2.2rem;
     }
-    .start-icon {
-      width: 80px !important;
-      height: 80px !important;
+    .home-page .start-icon {
+      width: 90px;
+      height: 90px;
+    }
+    .home-page .fakeit-logo {
+      max-width: 280px;
     }
   }
 </style>
 
-<div class="scale-container">
+<div class="home-page">
   <div class="fakeit-card">
-    <h1 class="mb-3" style="text-align: center;"><span class="highlight">FakeIt</span></h1>
-    <img src="assets/question.png" style="width: 30px; height: 30px;" class="info-icon" onclick="window.location.href='#info'">
-    <img src="icons/main.png" alt="FakeIt Logo" class="fakeit-logo" >
-    <br>
-    <img src="assets/start.png" alt="Start Icon" class="start-icon mt-3" style="width: 100px; height: 100px; " onclick="window.location.href='#newgame'">
+    <img src="assets/question.png" class="info-icon" alt="Info" onclick="window.location.href='#info'">
+    <h1 class="fakeit-title"><span class="highlight">FakeIt</span></h1>
+    <img src="icons/main.png" alt="FakeIt Logo" class="fakeit-logo">
+    <img src="assets/start.png" alt="Start" class="start-icon" onclick="window.location.href='#newgame'">
+    <p class="version-text">v2.0.0</p>
   </div>
 </div>
 

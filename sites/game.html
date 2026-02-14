@@ -1,392 +1,350 @@
-<!DOCTYPE html>
-<html lang="de">
+<style>
+    .game-page {
+        width: 100%;
+        max-width: 500px;
+        height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FakeIt - Rollenverteilung</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            user-select: none;
-        }
+    .game-page * {
+        box-sizing: border-box;
+        user-select: none;
+    }
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    .game-page .fakeit-card {
+        background: linear-gradient(to bottom right, #222831, #1a1e24);
+        border-radius: 15px;
+        color: #fff;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        padding: 25px;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
+    .game-page h1 {
+        font-size: 2.4rem;
+        margin: 0;
+        color: #00ADB5;
+        font-weight: 800;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        letter-spacing: 1px;
+        flex-shrink: 0;
+    }
 
-        .scale-container {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .game-page .card-content {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        flex: 1;
+        min-height: 180px;
+        max-height: 450px;
+    }
 
-        .fakeit-card {
-            background: linear-gradient(to bottom right, #222831, #1a1e24);
-            border-radius: 20px;
-            max-height: 95vh;
-            color: #fff;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
+    .game-page .role-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 1;
+        border-radius: 12px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.8rem;
-            color: #00ADB5;
-            text-shadow: none;
-            font-weight: 800;
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-            letter-spacing: 1px;
-        }
+    .game-page .role-container-member {
+        color: #2EFFA0;
+    }
 
-        .card-content {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            height: 400px;
-            width: 100%;
-        }
+    .game-page .role-container-impostor {
+        color: #FF2E63;
+    }
 
-        .role-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            /* Änderung: Spaltenanordnung */
-            justify-content: flex-end;
-            align-items: center;
-            z-index: 1;
-            border-radius: 12px;
-            padding: 20px;
-            /* Padding für Abstand zum Rand */
-            box-sizing: border-box;
-        }
+    .game-page .role-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-height: 75%;
+        width: 100%;
+    }
 
-        .role-container-member {
-            color: #2EFFA0;
-            /* Für Member */
-        }
+    .game-page .role-icon {
+        width: clamp(60px, 10vw, 120px);
+        height: clamp(60px, 10vw, 120px);
+        margin-bottom: clamp(5px, 1.5vw, 15px);
+    }
 
-        .role-container-impostor {
-            color: #FF2E63;
-            /* Für Impostor */
-        }
+    .game-page .role-icon-impostor {
+        filter: drop-shadow(0 0 10px rgba(255, 46, 99, 1));
+    }
 
-        .role-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            max-height: 75%;
-            /* Maximale Höhe auf 75% des Containers */
-            width: 100%;
-        }
+    .game-page .role-icon-member {
+        filter: drop-shadow(0 0 10px rgba(46, 255, 160, 1));
+    }
 
-        .role-icon {
-            width: clamp(60px, 10vw, 120px);
-            height: clamp(60px, 10vw, 120px);
-            margin-bottom: clamp(5px, 1.5vw, 15px);
-        }
+    .game-page .role-text {
+        font-size: clamp(1rem, 2.5vw, 2.2rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        text-align: center;
+        padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
+        letter-spacing: 0.15em;
+        margin: 0;
+    }
 
-        .role-icon-impostor {
-            filter: drop-shadow(0 0 10px rgba(255, 46, 99, 1));
-            /* Für Impostor */
-        }
+    .game-page .role-text-impostor {
+        text-shadow: 0 0 10px rgba(255, 46, 99, 0.7);
+    }
 
-        .role-icon-member {
-            filter: drop-shadow(0 0 10px rgba(46, 255, 160, 1));
-            /* Für Member */
-        }
+    .game-page .role-text-member {
+        text-shadow: 0 0 10px rgba(46, 255, 160, 0.7);
+    }
 
-        .role-text {
-            font-size: clamp(1rem, 2.5vw, 2.2rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            text-align: center;
-            padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
-            letter-spacing: 0.15em;
-            margin: 0;
-        }
+    .game-page .role-hint {
+        font-size: clamp(0.7rem, 1.6vw, 1.2rem);
+        font-weight: 500;
+        text-transform: none;
+        text-align: center;
+        padding: clamp(4px, 0.8vw, 8px) clamp(8px, 1.5vw, 16px);
+        letter-spacing: 0.08em;
+        margin: 0;
+        opacity: 0.9;
+    }
 
-        .role-text-impostor {
-            text-shadow: 0 0 10px rgba(255, 46, 99, 0.7);
-            /* Für Impostor */
-        }
+    .game-page .role-hint-impostor {
+        text-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
+    }
 
-        .role-text-member {
-            text-shadow: 0 0 10px rgba(46, 255, 160, 0.7);
-            /* Für Member */
-        }
+    .game-page .role-hint-member {
+        text-shadow: 0 0 10px rgba(46, 255, 160, 0.5);
+    }
 
+    .game-page .draggable-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        cursor: grab;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
 
-        .role-hint {
-            font-size: clamp(0.7rem, 1.6vw, 1.2rem);
-            font-weight: 500;
-            text-transform: none;
-            text-align: center;
-            padding: clamp(4px, 0.8vw, 8px) clamp(8px, 1.5vw, 16px);
-            letter-spacing: 0.08em;
-            margin: 0;
-            opacity: 0.9;
-        }
+    .game-page .fakeit-logo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+    }
 
-        .role-hint-impostor {
-            text-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
-            /* Für Impostor */
-        }
+    .game-page .drag-indicator {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 3px;
+        z-index: 4;
+        transition: opacity 0.3s;
+    }
 
-        .role-hint-member {
-            text-shadow: 0 0 10px rgba(46, 255, 160, 0.5);
-            /* Für Member */
-        }
-        
+    .game-page .instructions {
+        margin: 0;
+        font-style: italic;
+        color: #EEEEEE;
+        font-size: 0.95rem;
+        opacity: 0.9;
+        line-height: 1.4;
+        flex-shrink: 0;
+    }
 
+    .game-page .highlight {
+        color: #00ADB5;
+        font-weight: 600;
+    }
 
-        .draggable-area {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            cursor: grab;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
+    .game-page .nextBtn:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+        filter: brightness(1.2);
+    }
 
+    .game-page .hidden {
+        display: none;
+    }
 
-        .fakeit-logo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 12px;
-        }
+    .game-page .visible {
+        display: block;
+    }
 
-        .drag-indicator {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 3px;
-            z-index: 4;
-            transition: opacity 0.3s;
-        }
+    .game-page .timer {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #EEEEEE;
+        opacity: 0.8;
+        flex-shrink: 0;
+    }
 
-        .instructions {
-            margin-top: 25px;
-            font-style: italic;
-            color: #EEEEEE;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
+    .game-page .timer .highlight {
+        color: #FF2E63;
+        font-weight: bold;
+    }
 
-        .highlight {
-            color: #00ADB5;
-            font-weight: 600;
-        }
+    .game-page .time-up {
+        color: #FF2E63;
+        font-weight: bold;
+    }
 
-        .nextBtn:hover {
-            cursor: pointer;
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-            filter: brightness(1.2);
-        }
+    .game-page .nextButton {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+    }
 
-        .hidden {
-            display: none;
-        }
+    .game-page .results-container {
+        max-height: 60vh;
+        overflow: hidden;
+        padding: 10px;
+    }
 
-        .visible {
-            display: block;
-        }
+    .game-page .results-list {
+        max-height: 40vh;
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        scrollbar-width: thin;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+        width: 100%;
+    }
 
-        .timer {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #EEEEEE;
-            opacity: 0.8;
-        }
+    .game-page .results-list::-webkit-scrollbar {
+        width: 8px;
+    }
 
-        .timer .highlight {
-            color: #FF2E63;
-            /* Rote Farbe für den Timer */
-            font-weight: bold;
-        }
+    .game-page .results-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
 
-        .time-up {
-            color: #FF2E63;
-            /* Rote Farbe für den Timer */
-            font-weight: bold;
-        }
+    .game-page .results-list::-webkit-scrollbar-thumb {
+        background: #00ADB5;
+        border-radius: 4px;
+    }
 
-        .nextButton {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-            cursor: pointer;
-        }
+    .game-page .results-list::-webkit-scrollbar-thumb:hover {
+        background: #00d4e0;
+    }
 
-        .results-container {
-  max-height: 60vh;           /* Nur damit es nicht den Bildschirm sprengt */
-  overflow: hidden;           /* WICHTIG: nicht scrollen */
-  padding: 10px;
-}
+    .game-page .impostor-item {
+        background: linear-gradient(to right, #FF2E63, #00FFAA);
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 12px 20px;
+        margin: 10px 0;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(255, 46, 99, 0.6);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: gamePageFadeInUp 0.5s ease forwards;
+        opacity: 0;
+    }
 
-.results-list {
-  max-height: 50vh;           /* Du willst nur diese scrollen lassen */
-  overflow-y: auto;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  scrollbar-width: thin;
-  margin-bottom: 10px;
-}
+    .game-page .impostor-icon {
+        width: 30px;
+        height: 30px;
+        filter: drop-shadow(0 0 5px #fff);
+    }
 
-.results-list::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .results-list::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-
-        .results-list::-webkit-scrollbar-thumb {
-            background: #00ADB5;
-            border-radius: 4px;
-        }
-
-        .results-list::-webkit-scrollbar-thumb:hover {
-            background: #00d4e0;
-        }
-
-
-        .impostor-item {
-            background: linear-gradient(to right, #FF2E63, #00FFAA);
-            color: #fff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 12px 20px;
-            margin: 10px 0;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(255, 46, 99, 0.6);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: fadeInUp 0.5s ease forwards;
+    @keyframes gamePageFadeInUp {
+        from {
+            transform: translateY(20px);
             opacity: 0;
         }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-        .impostor-icon {
-            width: 30px;
-            height: 30px;
-            filter: drop-shadow(0 0 5px #fff);
+    .game-page .disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        filter: grayscale(100%);
+    }
+
+    @media (max-width: 576px) {
+        .game-page .fakeit-card {
+            padding: 15px;
         }
 
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .game-page h1 {
+            font-size: 1.8rem;
         }
 
-
-        .disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
-            filter: grayscale(100%);
+        .game-page .role-text {
+            font-size: 1.8rem;
         }
 
-        @media (max-width: 576px) {
-            .fakeit-card {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .role-text {
-                font-size: 1.8rem;
-            }
-
-            .card-content {
-                height: 250px;
-            }
+        .game-page .instructions {
+            font-size: 0.8rem;
         }
-    </style>
-</head>
 
-<body>
-    <div class="scale-container">
-        <div class="fakeit-card" id="fakeitCard">
-            <h1 id="nameText">FAKE IT</h1>
-            <div class="results-list" id="resultsList">
-                <!-- Dynamisch generierte Liste der Impostor -->
-            </div>
-            <div class="card-content" id="cardContent">
-                <div class="role-container" id="roleContainer">
-                    <div class="role-content">
-                        <img src="assets/crew.png" alt="Impostor Icon" class="role-icon" id="roleIcon">
-                        <p class="role-text" id="roleText">Impostor</p>
-                        <p class="role-hint" id="roleHint">-</p>
-                    </div>
-                </div>
-                <div class="draggable-area" id="draggableArea">
-                    <img src="icons/main.png" alt="Logo" class="fakeit-logo">
-                </div>
-                <div class="drag-indicator" id="dragIndicator"></div>
-            </div>
-            <p class="timer hidden" id="timerContainer">Verbleibende Zeit: <span class="highlight" id="timer">07:00</span></p>
-            <p class="instructions" id="instructions">Bild nach oben ziehen um deine Rolle zu sehen, loslassen um sie zu verbergen</p>
-            <img src="assets/next-disabled.png" alt="Next Player" class=" disabled" id="nextButton"
-                style="width: 100px; height: 100px;">
+        .game-page .card-content {
+            max-height: 350px;
+        }
+    }
+</style>
+
+<div class="game-page">
+    <div class="fakeit-card" id="fakeitCard">
+        <h1 id="nameText">FAKE IT</h1>
+        <div class="results-list" id="resultsList">
         </div>
+        <div class="card-content" id="cardContent">
+            <div class="role-container" id="roleContainer">
+                <div class="role-content">
+                    <img src="assets/crew.png" alt="Impostor Icon" class="role-icon" id="roleIcon">
+                    <p class="role-text" id="roleText">Impostor</p>
+                    <p class="role-hint" id="roleHint">-</p>
+                </div>
+            </div>
+            <div class="draggable-area" id="draggableArea">
+                <img src="icons/main.png" alt="Logo" class="fakeit-logo">
+            </div>
+            <div class="drag-indicator" id="dragIndicator"></div>
+        </div>
+        <p class="timer hidden" id="timerContainer">Verbleibende Zeit: <span class="highlight" id="timer">07:00</span></p>
+        <p class="instructions" id="instructions">Bild nach oben ziehen um deine Rolle zu sehen, loslassen um sie zu verbergen</p>
+        <img src="assets/next-disabled.png" alt="Next Player" class="disabled" id="nextButton"
+            style="width: 80px; height: 80px; flex-shrink: 0;">
     </div>
-
-
-</body>
-
-</html>
+</div>

@@ -1,113 +1,109 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seite nicht gefunden | FakeIt</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            color: #aaa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<style>
+    .notfound-page {
+        width: 100%;
+        max-width: 500px;
+        height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .notfound-page * {
+        box-sizing: border-box;
+    }
+
+    .notfound-page .not-found-container {
+        background: linear-gradient(to bottom right, #222831, #1a1e24);
+        border-radius: 15px;
+        padding: 40px;
+        width: 100%;
+        height: 100%;
+        color: #aaa;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .notfound-page h1 {
+        font-size: 5rem;
+        color: #00ADB5;
+        margin: 0 0 20px;
+        text-shadow: 0 0 15px rgba(0, 173, 181, 0.7);
+    }
+
+    .notfound-page h2 {
+        font-size: 1.8rem;
+        margin: 0 0 20px;
+        color: #EEEEEE;
+    }
+
+    .notfound-page p {
+        font-size: 1.1rem;
+        margin: 0 0 30px;
+        line-height: 1.6;
+        color: #aaa;
+    }
+
+    .notfound-page .home-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #00ADB5;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .notfound-page .home-button:hover {
+        background-color: #00d4e0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .notfound-page .error-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: #FF2E63;
+        animation: notfoundBounce 2s infinite;
+    }
+
+    @keyframes notfoundBounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-20px);}
+        60% {transform: translateY(-10px);}
+    }
+
+    @media (max-width: 600px) {
+        .notfound-page h1 {
+            font-size: 3.5rem;
         }
 
-        body {
-            height: 100vh;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
+        .notfound-page h2 {
+            font-size: 1.4rem;
         }
 
-        .not-found-container {
-            background: rgba(34, 40, 49, 0.9);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            color: #aaa;
-            width: 90%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 1px solid #00ADB5;
+        .notfound-page .not-found-container {
+            padding: 30px 20px;
         }
+    }
+</style>
 
-        h1 {
-            font-size: 5rem;
-            color: #00ADB5;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(0, 173, 181, 0.7);
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .home-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #00ADB5;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .home-button:hover {
-            background-color: #00d4e0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .error-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: #FF2E63;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            h2 {
-                font-size: 1.4rem;
-            }
-            
-            .not-found-container {
-                padding: 30px 20px;
-            }
-        }
-    </style>
-</head>
-<body>
+<div class="notfound-page">
     <div class="not-found-container">
-        <div class="error-icon">⚠️</div>
+        <div class="error-icon">&#9888;&#65039;</div>
         <h1>404</h1>
         <h2>Oops! Seite nicht gefunden</h2>
-        <p>Die von Ihnen gesuchte Seite existiert nicht oder wurde verschoben. Vielleicht haben Sie sich vertippt oder die Seite wurde gelöscht.</p>
-        <a href="/" class="home-button">Zurück zur Startseite</a>
+        <p>Die von Ihnen gesuchte Seite existiert nicht oder wurde verschoben. Vielleicht haben Sie sich vertippt oder die Seite wurde gel&ouml;scht.</p>
+        <a href="#home" class="home-button">Zur&uuml;ck zur Startseite</a>
     </div>
-</body>
-</html>
+</div>
