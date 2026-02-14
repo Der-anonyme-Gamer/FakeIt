@@ -7,9 +7,7 @@
 **FakeIt** ist ein Social-Deduction-Partyspiel als Progressive Web App (PWA). Inspiriert von Spielen wie *Spyfall* und *Among Us* versuchen Crewmates den Impostor zu entlarven, der das geheime Wort nicht kennt.
 
 <p align="center">
-  <img src="screenshots/start.png" alt="Startbildschirm" width="200">
-  <img src="screenshots/newgame.png" alt="Neues Spiel erstellen" width="200">
-  <img src="screenshots/play.png" alt="Spielen" width="200">
+  <img src="screenshots/start.png" alt="Startbildschirm">
 </p>
 
 ## Features
@@ -29,6 +27,10 @@
 3. **Diskutieren** - Alle diskutieren reihum ueber das Wort. Crewmates versuchen den Impostor zu entlarven, der Impostor tut so, als kennt er das Wort
 4. **Abstimmen** - Nach Ablauf der Zeit wird abgestimmt, wer der Impostor ist
 5. **Ergebnis** - Die Impostors werden aufgedeckt. Crewmates gewinnen, wenn sie den Impostor finden. Der Impostor gewinnt, wenn er unentdeckt bleibt
+<p align="center">
+    <img src="screenshots/newgame.png" alt="Neues Spiel erstellen">
+    <img src="screenshots/play.png" alt="Spielen">
+</p>
 
 ## Technologie-Stack
 
@@ -66,7 +68,7 @@ Perfekt für:
 
 FakeIt kann als native Android App installiert werden
 
-1. [![Neueste App release herunterladen](https://img.shields.io/github/v/release/der-anonyme-gamer/repo?logo=github)](https://github.com/der-anonyme-gamer/fakeit/releases/latest)
+1. [![Neueste App release herunterladen](https://img.shields.io/github/v/release/der-anonyme-gamer/repo?logo=github)](https://github.com/der-anonyme-gamer/FakeIt/releases/latest)
 2. Installieren und los spielen 
 
 ---
