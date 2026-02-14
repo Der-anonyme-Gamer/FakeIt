@@ -1,92 +1,125 @@
-// Datenmodell für Kategorien
+/**
+ * categories.js - Kategorienverwaltung fuer FakeIt
+ *
+ * Verwaltet benutzerdefinierte Wortkategorien:
+ * - Erstellen neuer Kategorien mit Woertern und Hinweisen
+ * - Bearbeiten und Loeschen eigener Kategorien
+ * - Ansehen von Standard-Kategorien (nur lesen)
+ * - Export/Import als JSON-Datei
+ * - Zuruecksetzen aller Benutzerdaten
+ *
+ * Standard-Kategorien werden aus assets/default_categories.json geladen
+ * und sind nicht editierbar. Benutzerdefinierte Kategorien werden in
+ * localStorage unter dem Key 'fakeitCategories' gespeichert.
+ *
+ * In IIFE gewrappt, um Variablenkonflikte bei SPA-Seitenwechsel zu vermeiden.
+ */
+(function() {
 
+// --- Zustandsvariablen ---
 
-let categories = [];
-let defaultCategories = [];
-let pendingAction = null;
-let isEditing = false;
-let currentEditId = null;
+var categories = [];         // Benutzerdefinierte Kategorien (aus localStorage)
+var defaultCategories = [];  // Standard-Kategorien (aus JSON-Datei)
+var pendingAction = null;    // Gespeicherte Callback-Funktion fuer Bestaetigungs-Popup
+var isEditing = false;       // Wird gerade eine Kategorie bearbeitet?
+var currentEditId = null;    // ID der Kategorie, die bearbeitet wird
 
-// DOM-Elemente
-const categoryNameInput = document.getElementById('categoryName');
-const wordsContainer = document.getElementById('wordsContainer');
-const addWordBtn = document.getElementById('addWordBtn');
-const saveCategoryBtn = document.getElementById('saveCategoryBtn');
-const categoriesContainer = document.getElementById('categoriesContainer');
-const emptyState = document.getElementById('emptyState');
-const exportBtn = document.getElementById('exportBtn');
-const importBtn = document.getElementById('importBtn');
-const resetBtn = document.getElementById('resetBtn');
-const importFileInput = document.getElementById('importFile');
-const formTitle = document.getElementById('formTitle');
-const viewCategoryPopup = document.getElementById('viewCategoryPopup');
-const viewCategoryContent = document.getElementById('viewCategoryContent');
+// --- DOM-Elemente ---
 
-// Standard-Kategorien
+var categoryNameInput = document.getElementById('categoryName');
+var wordsContainer = document.getElementById('wordsContainer');
+var addWordBtn = document.getElementById('addWordBtn');
+var saveCategoryBtn = document.getElementById('saveCategoryBtn');
+var categoriesContainer = document.getElementById('categoriesContainer');
+var emptyState = document.getElementById('emptyState');
+var exportBtn = document.getElementById('exportBtn');
+var importBtn = document.getElementById('importBtn');
+var resetBtn = document.getElementById('resetBtn');
+var importFileInput = document.getElementById('importFile');
+var formTitle = document.getElementById('formTitle');
+var viewCategoryPopup = document.getElementById('viewCategoryPopup');
+var viewCategoryContent = document.getElementById('viewCategoryContent');
+var errorPopup = document.getElementById('errorPopup');
+var errorMessage = document.getElementById('errorMessage');
+var confirmPopup = document.getElementById('confirmPopup');
+var confirmMessage = document.getElementById('confirmMessage');
+var confirmActionBtn = document.getElementById('confirmActionBtn');
+var successPopup = document.getElementById('successPopup');
+var successMessage = document.getElementById('successMessage');
+
+// --- Initialisierung ---
+
+/** Laedt die Standard-Kategorien aus der JSON-Datei */
 async function initializeDefaultCategories() {
-
     try {
-        const response = await fetch('assets/default_categories.json');
-        const data = await response.json();
+        var response = await fetch('assets/default_categories.json');
+        var data = await response.json();
         defaultCategories = data;
-        console.log("Standard-Kategorien geladen:", defaultCategories);
         renderCategories();
     } catch (error) {
         console.error("Fehler beim Laden der Kategorien:", error);
-        showError("Kategorien konnten nicht geladen werden.");
+        showErrorPopup("Kategorien konnten nicht geladen werden.");
     }
 }
-
-// Initialisierung
 
 initializeDefaultCategories();
 loadCategories();
 renderCategories();
 
-// Event-Listener
-addWordBtn.addEventListener('click', addWordInput);
-saveCategoryBtn.addEventListener('click', saveCategory);
-exportBtn.addEventListener('click', exportData);
-importBtn.addEventListener('click', () => importFileInput.click());
-importFileInput.addEventListener('change', importData);
-resetBtn.addEventListener('click', () => showConfirmPopup('Möchtest du wirklich ALLE deine Daten löschen? (Standard-Kategorien bleiben erhalten)', resetData));
+// --- Event-Listener ---
 
-// Erste Wort-Eingabe hinzufügen
+if (addWordBtn) addWordBtn.addEventListener('click', function() { addWordInput(); });
+if (saveCategoryBtn) saveCategoryBtn.addEventListener('click', saveCategory);
+if (exportBtn) exportBtn.addEventListener('click', exportData);
+if (importBtn) importBtn.addEventListener('click', function() { if (importFileInput) importFileInput.click(); });
+if (importFileInput) importFileInput.addEventListener('change', importData);
+if (resetBtn) resetBtn.addEventListener('click', function() {
+    showConfirmPopup('Möchtest du wirklich ALLE deine Daten löschen? (Standard-Kategorien bleiben erhalten)', resetData);
+});
+
+// Erstes leeres Wort-Eingabefeld anzeigen
 addWordInput();
 
-// Popup-Funktionen
+// --- Popup-Funktionen ---
+
 function showErrorPopup(message) {
-    errorMessage.textContent = message;
-    errorPopup.classList.add('active');
+    if (errorMessage) errorMessage.textContent = message;
+    if (errorPopup) errorPopup.classList.add('active');
 }
 
+/** Zeigt ein Bestaetigungs-Popup an und speichert die Aktion fuer spaeter */
 function showConfirmPopup(message, action) {
-    confirmMessage.textContent = message;
-    confirmPopup.classList.add('active');
+    if (confirmMessage) confirmMessage.textContent = message;
+    if (confirmPopup) confirmPopup.classList.add('active');
     pendingAction = action;
 }
 
 function showSuccessPopup(message) {
-    successMessage.textContent = message;
-    successPopup.classList.add('active');
+    if (successMessage) successMessage.textContent = message;
+    if (successPopup) successPopup.classList.add('active');
 }
 
 function closePopup(popupId) {
-    document.getElementById(popupId).classList.remove('active');
+    var el = document.getElementById(popupId);
+    if (el) el.classList.remove('active');
 }
 
-// Bestätigungsaktion ausführen
-confirmActionBtn.addEventListener('click', () => {
-    if (pendingAction) {
-        pendingAction();
-        closePopup('confirmPopup');
-        pendingAction = null;
-    }
-});
+// Bestaetigungs-Button: Fuehrt die gespeicherte Aktion aus
+if (confirmActionBtn) {
+    confirmActionBtn.addEventListener('click', function() {
+        if (pendingAction) {
+            pendingAction();
+            closePopup('confirmPopup');
+            pendingAction = null;
+        }
+    });
+}
 
-// Kategorien aus localStorage laden
+// --- localStorage-Operationen ---
+
+/** Laedt benutzerdefinierte Kategorien aus localStorage */
 function loadCategories() {
-    const savedCategories = localStorage.getItem('fakeitCategories');
+    var savedCategories = localStorage.getItem('fakeitCategories');
     if (savedCategories) {
         try {
             categories = JSON.parse(savedCategories);
@@ -97,71 +130,82 @@ function loadCategories() {
     }
 }
 
-// Kategorien in localStorage speichern
+/** Speichert benutzerdefinierte Kategorien in localStorage */
 function saveCategories() {
     localStorage.setItem('fakeitCategories', JSON.stringify(categories));
 }
 
-// Wort-Eingabegruppe hinzufügen
-function addWordInput(word = '', hints = ['']) {
-    const wordGroup = document.createElement('div');
+// --- Formular: Wort-Eingabe ---
+
+/**
+ * Fuegt eine Wort-Eingabegruppe zum Formular hinzu.
+ * Jede Gruppe besteht aus einem Wort-Eingabefeld, beliebig vielen
+ * Hinweis-Feldern und Buttons zum Hinzufuegen/Entfernen.
+ *
+ * @param {string} word - Vorausgefuelltes Wort (optional)
+ * @param {string[]} hints - Vorausgefuellte Hinweise (optional)
+ */
+function addWordInput(word, hints) {
+    if (word === undefined) word = '';
+    if (hints === undefined) hints = [''];
+
+    var wordGroup = document.createElement('div');
     wordGroup.className = 'word-input-group';
 
-    const wordInput = document.createElement('input');
+    var wordInput = document.createElement('input');
     wordInput.type = 'text';
     wordInput.className = 'word-input';
     wordInput.placeholder = 'Wort';
-    wordInput.value = '';
+    wordInput.value = word;
 
-    const removeBtn = document.createElement('button');
+    var removeBtn = document.createElement('button');
     removeBtn.className = 'remove-word-btn';
     removeBtn.innerHTML = '&times;';
-    removeBtn.onclick = () => wordGroup.remove();
+    removeBtn.onclick = function() { wordGroup.remove(); };
 
     wordGroup.appendChild(wordInput);
 
-    // Hinweise Container
-    const hintsContainer = document.createElement('div');
+    // Hinweis-Container mit vorhandenen Hints befuellen
+    var hintsContainer = document.createElement('div');
     hintsContainer.className = 'hint-container';
 
-    // Hinweise hinzufügen
-    hints.forEach((hint, index) => {
-        const hintItem = document.createElement('div');
+    hints.forEach(function(hint) {
+        var hintItem = document.createElement('div');
         hintItem.className = 'hint-item';
 
-        const hintInput = document.createElement('input');
+        var hintInput = document.createElement('input');
         hintInput.type = 'text';
         hintInput.className = 'hint-input';
-        hintInput.placeholder = 'Hinweis'; // Entfernt die Nummerierung
+        hintInput.placeholder = 'Hinweis';
         hintInput.value = hint;
 
-        const removeHintBtn = document.createElement('button');
+        var removeHintBtn = document.createElement('button');
         removeHintBtn.className = 'remove-hint-btn';
         removeHintBtn.innerHTML = '&times;';
-        removeHintBtn.onclick = () => hintItem.remove();
+        removeHintBtn.onclick = function() { hintItem.remove(); };
 
         hintItem.appendChild(hintInput);
         hintItem.appendChild(removeHintBtn);
         hintsContainer.appendChild(hintItem);
     });
 
-    // Button für weiteren Hinweis
-    const addHintBtn = document.createElement('button');
+    // Button zum Hinzufuegen weiterer Hinweise
+    var addHintBtn = document.createElement('button');
     addHintBtn.className = 'add-hint-btn';
     addHintBtn.textContent = '+ Weiterer Hinweis';
-    addHintBtn.onclick = () => {
-        const hintItem = document.createElement('div');
+    addHintBtn.onclick = function() {
+        var hintItem = document.createElement('div');
         hintItem.className = 'hint-item';
 
-        const hintInput = document.createElement('input');
+        var hintInput = document.createElement('input');
         hintInput.type = 'text';
         hintInput.className = 'hint-input';
         hintInput.placeholder = 'Hinweis';
 
-        const removeHintBtn = document.createElement('button');
+        var removeHintBtn = document.createElement('button');
         removeHintBtn.className = 'remove-hint-btn';
         removeHintBtn.innerHTML = '&times;';
-        removeHintBtn.onclick = () => hintItem.remove();
+        removeHintBtn.onclick = function() { hintItem.remove(); };
 
         hintItem.appendChild(hintInput);
         hintItem.appendChild(removeHintBtn);
@@ -171,41 +215,44 @@ function addWordInput(word = '', hints = ['']) {
     hintsContainer.appendChild(addHintBtn);
     wordGroup.appendChild(hintsContainer);
     wordGroup.appendChild(removeBtn);
-    wordsContainer.appendChild(wordGroup);
+    if (wordsContainer) wordsContainer.appendChild(wordGroup);
 }
 
-// Neue Kategorie speichern oder bestehende aktualisieren
+// --- Kategorie speichern ---
+
+/**
+ * Speichert die aktuelle Kategorie aus dem Formular.
+ * Validiert Name und Woerter, erstellt oder aktualisiert die Kategorie.
+ */
 function saveCategory() {
-    const name = categoryNameInput.value.trim();
+    var name = categoryNameInput ? categoryNameInput.value.trim() : '';
 
     if (!name) {
         showErrorPopup('Bitte einen Kategorienamen eingeben');
         return;
     }
 
-    // Wörter und Hinweise sammeln
-    const wordGroups = wordsContainer.querySelectorAll('.word-input-group');
-    const words = [];
-    let isEmpty = true;
+    // Alle Wort-Gruppen auslesen
+    var wordGroups = wordsContainer ? wordsContainer.querySelectorAll('.word-input-group') : [];
+    var words = [];
+    var isEmpty = true;
 
-    wordGroups.forEach(group => {
-        const wordInput = group.querySelector('.word-input');
-        const word = wordInput.value.trim();
+    wordGroups.forEach(function(group) {
+        var wordInput = group.querySelector('.word-input');
+        var word = wordInput.value.trim();
 
         if (word) {
-            // Hinweise sammeln
-            const hintInputs = group.querySelectorAll('.hint-item .hint-input');
-            const hints = [];
+            var hintInputs = group.querySelectorAll('.hint-item .hint-input');
+            var hints = [];
 
-            hintInputs.forEach(input => {
-                const hint = input.value.trim();
+            hintInputs.forEach(function(input) {
+                var hint = input.value.trim();
                 if (hint) hints.push(hint);
             });
 
-            // Mindestens einen Hinweis sicherstellen
             if (hints.length === 0) hints.push('Kein Hinweis');
 
-            words.push({ word, hints });
+            words.push({ word: word, hints: hints });
             isEmpty = false;
         }
     });
@@ -216,162 +263,148 @@ function saveCategory() {
     }
 
     if (isEditing) {
-        // Kategorie aktualisieren
-        const index = categories.findIndex(c => c.id === currentEditId);
+        // Bestehende Kategorie aktualisieren
+        var index = categories.findIndex(function(c) { return c.id === currentEditId; });
         if (index !== -1) {
-            categories[index] = {
-                id: currentEditId,
-                name,
-                words
-            };
+            categories[index] = { id: currentEditId, name: name, words: words };
         }
     } else {
-        // Neue Kategorie erstellen
-        const newCategory = {
-            id: Date.now(),
-            name,
-            words
-        };
-
-        // Zur Liste hinzufügen
-        categories.push(newCategory);
+        // Neue Kategorie erstellen (ID = Zeitstempel)
+        categories.push({ id: Date.now(), name: name, words: words });
     }
 
     saveCategories();
     renderCategories();
     resetForm();
 
-    showSuccessPopup(`Kategorie erfolgreich ${isEditing ? 'aktualisiert' : 'gespeichert'}!`);
+    showSuccessPopup('Kategorie erfolgreich ' + (isEditing ? 'aktualisiert' : 'gespeichert') + '!');
 }
 
-// Formular zurücksetzen
+/** Setzt das Formular in den Ausgangszustand zurueck */
 function resetForm() {
     isEditing = false;
     currentEditId = null;
-    formTitle.textContent = 'Neue Kategorie';
-    categoryNameInput.value = '';
-    wordsContainer.innerHTML = '';
+    if (formTitle) formTitle.textContent = 'Neue Kategorie';
+    if (categoryNameInput) categoryNameInput.value = '';
+    if (wordsContainer) wordsContainer.innerHTML = '';
     addWordInput();
 }
 
-// Kategorien anzeigen
-function renderCategories() {
-    // Alle Kategorien kombinieren (Standard + Benutzer)
-    const allCategories = [...defaultCategories, ...categories];
+// --- Kategorie-Anzeige ---
 
-    if (allCategories.length === 0) {
-        emptyState.style.display = 'block';
-        categoriesContainer.innerHTML = '';
+/**
+ * Rendert alle Kategorien (Standard + benutzerdefiniert) als Karten.
+ * Standard-Kategorien haben einen "Ansehen"-Button,
+ * benutzerdefinierte Kategorien haben "Bearbeiten" und "Loeschen".
+ */
+function renderCategories() {
+    var allCats = defaultCategories.concat(categories);
+
+    if (allCats.length === 0) {
+        if (emptyState) emptyState.style.display = 'block';
+        if (categoriesContainer) categoriesContainer.innerHTML = '';
         return;
     }
 
-    emptyState.style.display = 'none';
-    categoriesContainer.innerHTML = '';
+    if (emptyState) emptyState.style.display = 'none';
+    if (categoriesContainer) categoriesContainer.innerHTML = '';
 
-    allCategories.forEach(category => {
-        const card = document.createElement('div');
-        card.className = `category-card ${category.isDefault ? 'default-category' : ''}`;
+    allCats.forEach(function(category) {
+        var card = document.createElement('div');
+        card.className = 'category-card' + (category.isDefault ? ' default-category' : '');
 
-        card.innerHTML = `
-                    <div class="category-name">${category.name} ${category.isDefault ? '<span style="font-size:0.8em;color:#aaa;">(Standard)</span>' : ''}</div>
-                    <div class="words-list">
-                        ${category.words.slice(0, 3).map(word => `
-                            <div class="word-item">
-                                <span class="word-text">${word.word}</span>
-                                <div class="hint-text">${word.hints.length} Hinweis${word.hints.length !== 1 ? 'e' : ''}</div>
-                            </div>
-                        `).join('')}
-                        ${category.words.length > 3 ? `<div style="padding: 8px 0; color: #aaa; text-align: center;">+ ${category.words.length - 3} weitere</div>` : ''}
-                    </div>
-                    <div class="actions">
-                        ${!category.isDefault ? `
-                            <button class="action-btn" onclick="editCategory(${category.id})">✏️ Bearbeiten</button>
-                            <button class="action-btn btn-delete" onclick="showConfirmPopup('Kategorie wirklich löschen?', () => deleteCategory(${category.id}))">🗑️ Löschen</button>
-                        ` : `
-                            <button class="action-btn" onclick="viewCategory(${category.id})">👁️ Ansehen</button>
-                            <button class="action-btn" style="visibility:hidden;" disabled></button>
-                        `}
-                    </div>
-                `;
+        // Vorschau: Erste 3 Woerter anzeigen, Rest als "+X weitere"
+        card.innerHTML =
+            '<div class="category-name">' + category.name +
+            (category.isDefault ? ' <span style="font-size:0.8em;color:#aaa;">(Standard)</span>' : '') +
+            '</div>' +
+            '<div class="words-list">' +
+            category.words.slice(0, 3).map(function(w) {
+                return '<div class="word-item"><span class="word-text">' + w.word + '</span>' +
+                       '<div class="hint-text">' + w.hints.length + ' Hinweis' + (w.hints.length !== 1 ? 'e' : '') + '</div></div>';
+            }).join('') +
+            (category.words.length > 3 ? '<div style="padding: 8px 0; color: #aaa; text-align: center;">+ ' + (category.words.length - 3) + ' weitere</div>' : '') +
+            '</div>' +
+            '<div class="actions">' +
+            (!category.isDefault ?
+                '<button class="action-btn" onclick="editCategory(' + category.id + ')">Bearbeiten</button>' +
+                '<button class="action-btn btn-delete" onclick="showConfirmPopup(\'Kategorie wirklich löschen?\', function() { deleteCategory(' + category.id + '); })">Löschen</button>'
+                :
+                '<button class="action-btn" onclick="viewCategory(' + category.id + ')">Ansehen</button>' +
+                '<button class="action-btn" style="visibility:hidden;" disabled></button>'
+            ) +
+            '</div>';
 
-        categoriesContainer.appendChild(card);
+        if (categoriesContainer) categoriesContainer.appendChild(card);
     });
 }
 
-// Kategorie ansehen (Popup)
+// --- Kategorie-Aktionen ---
+
+/** Zeigt alle Woerter und Hinweise einer Kategorie in einem Popup */
 function viewCategory(id) {
-    const allCategories = [...defaultCategories, ...categories];
-    const category = allCategories.find(c => c.id === id);
+    var allCats = defaultCategories.concat(categories);
+    var category = allCats.find(function(c) { return c.id === id; });
     if (!category) return;
 
-    // Popup-Inhalt erstellen
-    viewCategoryContent.innerHTML = `
-                <div class="category-title">${category.name}</div>
-                <div class="words-container">
-                    ${category.words.map(word => `
-                        <div class="word-card">
-                            <div class="word-name">${word.word}</div>
-                            <div class="hints-list">
-                                ${word.hints.map(hint => `
-                                    <div class="hint-item">${hint}</div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
+    if (viewCategoryContent) {
+        viewCategoryContent.innerHTML =
+            '<div class="category-title">' + category.name + '</div>' +
+            '<div class="words-container">' +
+            category.words.map(function(w) {
+                return '<div class="word-card"><div class="word-name">' + w.word + '</div>' +
+                       '<div class="hints-list">' +
+                       w.hints.map(function(h) { return '<div class="hint-item">' + h + '</div>'; }).join('') +
+                       '</div></div>';
+            }).join('') +
+            '</div>';
+    }
 
-    // Popup anzeigen
-    viewCategoryPopup.classList.add('active');
+    if (viewCategoryPopup) viewCategoryPopup.classList.add('active');
 }
 
-// Kategorie bearbeiten
+/** Laedt eine benutzerdefinierte Kategorie ins Bearbeitungsformular */
 function editCategory(id) {
-    const category = categories.find(c => c.id === id);
+    var category = categories.find(function(c) { return c.id === id; });
     if (!category) return;
 
-    // Formular mit Kategoriedaten füllen
-    formTitle.textContent = `${category.name} bearbeiten`;
-    categoryNameInput.value = category.name;
+    if (formTitle) formTitle.textContent = category.name + ' bearbeiten';
+    if (categoryNameInput) categoryNameInput.value = category.name;
+    if (wordsContainer) wordsContainer.innerHTML = '';
 
-    // Wort-Eingaben leeren
-    wordsContainer.innerHTML = '';
-
-    // Wörter hinzufügen
-    category.words.forEach(word => {
-        addWordInput(word.word, word.hints);
+    category.words.forEach(function(w) {
+        addWordInput(w.word, w.hints);
     });
 
-    // Kategorie aus der Liste entfernen (wird beim Speichern neu hinzugefügt)
-    categories = categories.filter(c => c.id !== id);
+    categories = categories.filter(function(c) { return c.id !== id; });
     saveCategories();
 
-    // Bearbeitungsmodus aktivieren
     isEditing = true;
     currentEditId = id;
 }
 
-// Kategorie löschen
+/** Loescht eine benutzerdefinierte Kategorie */
 function deleteCategory(id) {
-    categories = categories.filter(c => c.id !== id);
+    categories = categories.filter(function(c) { return c.id !== id; });
     saveCategories();
     renderCategories();
     showSuccessPopup('Kategorie gelöscht');
 }
 
-// Daten exportieren
+// --- Export/Import ---
+
+/** Exportiert alle benutzerdefinierten Kategorien als JSON-Datei */
 function exportData() {
     if (categories.length === 0) {
         showErrorPopup('Keine benutzerdefinierten Daten zum Exportieren');
         return;
     }
 
-    const dataStr = JSON.stringify(categories, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var dataStr = JSON.stringify(categories, null, 2);
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var exportFileDefaultName = 'fakeit_categories_' + new Date().toISOString().slice(0, 10) + '.json';
 
-    const exportFileDefaultName = `fakeit_categories_${new Date().toISOString().slice(0, 10)}.json`;
-
-    const linkElement = document.createElement('a');
+    var linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
@@ -379,16 +412,15 @@ function exportData() {
     showSuccessPopup('Daten exportiert');
 }
 
-// Daten importieren
+/** Importiert Kategorien aus einer JSON-Datei (ersetzt vorhandene) */
 function importData(event) {
-    const file = event.target.files[0];
+    var file = event.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = function (e) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
         try {
-            const importedCategories = JSON.parse(e.target.result);
-
+            var importedCategories = JSON.parse(e.target.result);
             if (Array.isArray(importedCategories) && importedCategories.length > 0) {
                 categories = importedCategories;
                 saveCategories();
@@ -400,13 +432,12 @@ function importData(event) {
         } catch (error) {
             showErrorPopup('Import fehlgeschlagen');
         }
-
-        importFileInput.value = '';
+        if (importFileInput) importFileInput.value = '';
     };
     reader.readAsText(file);
 }
 
-// Daten zurücksetzen (nur Benutzerdaten)
+/** Loescht alle benutzerdefinierten Kategorien aus localStorage */
 function resetData() {
     localStorage.removeItem('fakeitCategories');
     categories = [];
@@ -414,3 +445,12 @@ function resetData() {
     resetForm();
     showSuccessPopup('Benutzerdaten zurückgesetzt');
 }
+
+// --- Globale Funktionen fuer HTML onclick-Handler ---
+window.closePopup = closePopup;
+window.editCategory = editCategory;
+window.viewCategory = viewCategory;
+window.deleteCategory = deleteCategory;
+window.showConfirmPopup = showConfirmPopup;
+
+})();
