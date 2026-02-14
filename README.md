@@ -28,8 +28,8 @@
 4. **Abstimmen** - Nach Ablauf der Zeit wird abgestimmt, wer der Impostor ist
 5. **Ergebnis** - Die Impostors werden aufgedeckt. Crewmates gewinnen, wenn sie den Impostor finden. Der Impostor gewinnt, wenn er unentdeckt bleibt
 <p align="center">
-    <img src="screenshots/newgame.png" alt="Neues Spiel erstellen">
-    <img src="screenshots/play.png" alt="Spielen">
+    <img src="screenshots/newgame.png" alt="Neues Spiel erstellen" width="300">
+    <img src="screenshots/play.png" alt="Spielen" width="300">
 </p>
 
 ## Technologie-Stack
