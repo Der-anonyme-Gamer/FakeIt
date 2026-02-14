@@ -1,209 +1,286 @@
 [
   {
     "id": -1,
-    "name": "Berufe",
+    "name": "Einfache Wörter",
     "isDefault": true,
     "words": [
-      {
-        "word": "Archäologe",
-        "hints": [
-          "Stratigrafie",
-          "Grabungsstätte",
-          "Artefaktanalyse",
-          "Erdschichten",
-          "Epoche"
-        ]
-      },
-      {
-        "word": "Kryptograf",
-        "hints": [
-          "Public Key",
-          "Zahlentheorie",
-          "Elliptische Kurve",
-          "AES",
-          "Entropie"
-        ]
-      },
-      {
-        "word": "Forensiker",
-        "hints": [
-          "Ballistik",
-          "Blutspurenmuster",
-          "Tatortrekonstruktion",
-          "DNA-Profiling",
-          "Kriminalbiologie"
-        ]
-      },
-      {
-        "word": "Astrophysiker",
-        "hints": [
-          "Singularität",
-          "Quantenfeldtheorie",
-          "Rotverschiebung",
-          "Kosmische Strahlung",
-          "Hubble-Konstante"
-        ]
-      },
-      {
-        "word": "Paläontologe",
-        "hints": [
-          "Trilobit",
-          "Perm-Zeit",
-          "Ammonit",
-          "Erdzeitalter",
-          "Knochenplatte"
-        ]
-      },
-      {
-        "word": "Ethnologe",
-        "hints": [
-          "Sozialstruktur",
-          "Ritualanalyse",
-          "Feldnotizen",
-          "Verwandtschaftssystem",
-          "Ethnografie"
-        ]
-      },
-      {
-        "word": "Kartograf",
-        "hints": [
-          "Isolinien",
-          "Projektion",
-          "Legende",
-          "Geodäsie",
-          "Atlas"
-        ]
-      },
-      {
-        "word": "Notar",
-        "hints": [
-          "Beurkundung",
-          "Urkundsperson",
-          "Rechtskraft",
-          "Öffentliche Beglaubigung",
-          "Formvorschrift"
-        ]
-      },
-      {
-        "word": "Mediator",
-        "hints": [
-          "Allparteilichkeit",
-          "Deeskalation",
-          "Verhandlungstechnik",
-          "Konfliktdynamik",
-          "Konsensfindung"
-        ]
-      },
-      {
-        "word": "Gerichtsvollzieher",
-        "hints": [
-          "Zwangsmaßnahme",
-          "Vollstreckungsauftrag",
-          "Titelzustellung",
-          "Pfändungsprotokoll",
-          "Amtszwang"
-        ]
-      },
-      {
-        "word": "Vulkanologe",
-        "hints": [
-          "Tektonik",
-          "Plinianisch",
-          "Seismograf",
-          "Basaltlava",
-          "Magmakammer"
-        ]
-      },
-      {
-        "word": "Toxikologe",
-        "hints": [
-          "LD50",
-          "Metabolisierung",
-          "Expositionsweg",
-          "Kumulation",
-          "Antidot"
-        ]
-      },
-      {
-        "word": "Osteopath",
-        "hints": [
-          "Faszientherapie",
-          "Palpation",
-          "Mobilisation",
-          "Körperstatik",
-          "Eigenregulation"
-        ]
-      },
-      {
-        "word": "Imker",
-        "hints": [
-          "Apis mellifera",
-          "Schwarmkontrolle",
-          "Brutpflege",
-          "Pollenhöschen",
-          "Rähmchen"
-        ]
-      },
-      {
-        "word": "Meteorologe",
-        "hints": [
-          "Barometrischer Druck",
-          "Advektion",
-          "Isobaren",
-          "Synoptik",
-          "Zyklonal"
-        ]
-      },
-      {
-        "word": "Restaurator",
-        "hints": [
-          "Substanzanalyse",
-          "Schichtenfreilegung",
-          "Originalsubstanz",
-          "Reversibilität",
-          "Konservierung"
-        ]
-      },
-      {
-        "word": "Pathologe",
-        "hints": [
-          "Histologie",
-          "Makroskopie",
-          "Obduktionsbericht",
-          "Gewebeschnitt",
-          "Pathogenese"
-        ]
-      },
-      {
-        "word": "Psychiater",
-        "hints": [
-          "DSM-5",
-          "Psychopharmaka",
-          "Affektive Störung",
-          "Anamnese",
-          "Neurotransmitter"
-        ]
-      },
-      {
-        "word": "Kriminologe",
-        "hints": [
-          "Delinquenz",
-          "Täterprofil",
-          "Kriminalstatistik",
-          "Sozialabweichung",
-          "Motivlage"
-        ]
-      },
-      {
-        "word": "Pilot",
-        "hints": [
-          "IFR",
-          "Flugplan",
-          "Avionik",
-          "Triebwerksstart",
-          "Kurskorrektur"
-        ]
-      }
+      {"word": "Regenschirm", "hints": ["Wetter", "Tasche", "Vergessen", "Herbst"]},
+      {"word": "Kühlschrank", "hints": ["Geräusch", "Küche", "Weiß", "Nachts"]},
+      {"word": "Sonnenbrille", "hints": ["Urlaub", "Gesicht", "Dunkel", "Accessoire"]},
+      {"word": "Zahnbürste", "hints": ["Morgens", "Reise", "Plastik", "Routine"]},
+      {"word": "Fahrrad", "hints": ["Verkehr", "Stadt", "Draußen", "Bewegen"]},
+      {"word": "Fernseher", "hints": ["Wohnzimmer", "Abend", "Sofa", "Langeweile"]},
+      {"word": "Schokolade", "hints": ["Geschenk", "Braun", "Versuchung", "Winter"]},
+      {"word": "Bleistift", "hints": ["Papier", "Schule", "Holz", "Dünn"]},
+      {"word": "Wecker", "hints": ["Morgen", "Nervig", "Montag", "Routine"]},
+      {"word": "Schlüssel", "hints": ["Metall", "Klein", "Verlieren", "Hosentasche"]},
+      {"word": "Kopfhörer", "hints": ["Musik", "Unterwegs", "Kabel", "Technik"]},
+      {"word": "Handtuch", "hints": ["Stoff", "Nass", "Bad", "Strand"]},
+      {"word": "Kerze", "hints": ["Romantisch", "Abend", "Warm", "Dezember"]},
+      {"word": "Brille", "hints": ["Gesicht", "Nase", "Alltag", "Metall"]},
+      {"word": "Kissen", "hints": ["Weich", "Schlaf", "Bett", "Gemütlich"]}
+    ]
+  },
+  {
+    "id": -2,
+    "name": "Rund um die Welt",
+    "isDefault": true,
+    "words": [
+      {"word": "Eiffelturm", "hints": ["Europa", "Touristen", "Wahrzeichen", "Metall"]},
+      {"word": "Pyramiden", "hints": ["Wüste", "Alt", "Touristen", "Steine"]},
+      {"word": "Freiheitsstatue", "hints": ["Hafen", "Geschenk", "Touristen", "Grün"]},
+      {"word": "Amazonas", "hints": ["Südamerika", "Natur", "Groß", "Gefährlich"]},
+      {"word": "Chinesische Mauer", "hints": ["Asien", "Alt", "Lang", "Bauwerk"]},
+      {"word": "Kolosseum", "hints": ["Europa", "Antik", "Ruine", "Zuschauer"]},
+      {"word": "Safari", "hints": ["Afrika", "Kamera", "Reise", "Natur"]},
+      {"word": "Taj Mahal", "hints": ["Asien", "Liebe", "Weiß", "Gebäude"]},
+      {"word": "Venedig", "hints": ["Europa", "Romantik", "Altstadt", "Reise"]},
+      {"word": "Mount Everest", "hints": ["Asien", "Kalt", "Rekord", "Gefährlich"]},
+      {"word": "Nordlicht", "hints": ["Winter", "Nacht", "Norden", "Farben"]},
+      {"word": "Sahara", "hints": ["Afrika", "Heiß", "Groß", "Trocken"]},
+      {"word": "Niagarafälle", "hints": ["Nordamerika", "Laut", "Grenze", "Natur"]},
+      {"word": "Tokio", "hints": ["Asien", "Groß", "Modern", "Voll"]},
+      {"word": "Oktoberfest", "hints": ["Bayern", "Tradition", "Herbst", "Groß"]}
+    ]
+  },
+  {
+    "id": -3,
+    "name": "Unterhaltung",
+    "isDefault": true,
+    "words": [
+      {"word": "Harry Potter", "hints": ["Fantasy", "Bücher", "90er", "Kinder"]},
+      {"word": "Mario Kart", "hints": ["Konsole", "Spaß", "Gruppe", "Wettbewerb"]},
+      {"word": "Titanic", "hints": ["Tragödie", "Film", "Meer", "Alt"]},
+      {"word": "Monopoly", "hints": ["Familie", "Abend", "Streit", "Würfel"]},
+      {"word": "Netflix", "hints": ["Abend", "Sofa", "Bildschirm", "Abo"]},
+      {"word": "Star Wars", "hints": ["Kino", "Klassiker", "Effekte", "Saga"]},
+      {"word": "Minecraft", "hints": ["Computer", "Kinder", "Kreativ", "Stunden"]},
+      {"word": "TikTok", "hints": ["Handy", "Kurz", "Jugend", "Trend"]},
+      {"word": "Jurassic Park", "hints": ["Kino", "90er", "Effekte", "Angst"]},
+      {"word": "Spotify", "hints": ["Handy", "App", "Abo", "Unterwegs"]},
+      {"word": "Pokémon", "hints": ["Japan", "Sammeln", "Kinder", "Nostalgie"]},
+      {"word": "Disney", "hints": ["Amerika", "Kinder", "Klassiker", "Familie"]},
+      {"word": "Fortnite", "hints": ["Online", "Jugend", "Gratis", "Hype"]},
+      {"word": "Squid Game", "hints": ["Asien", "Überleben", "Serie", "Viral"]},
+      {"word": "YouTube", "hints": ["Internet", "Video", "Gratis", "Kanal"]}
+    ]
+  },
+  {
+    "id": -4,
+    "name": "Alltag",
+    "isDefault": true,
+    "words": [
+      {"word": "Staubsauger", "hints": ["Haushalt", "Laut", "Boden", "Wochenende"]},
+      {"word": "Mikrowelle", "hints": ["Küche", "Schnell", "Essen", "Heiß"]},
+      {"word": "Dusche", "hints": ["Morgens", "Bad", "Wasser", "Routine"]},
+      {"word": "Supermarkt", "hints": ["Einkaufen", "Wochenende", "Voll", "Parkplatz"]},
+      {"word": "Hausaufgaben", "hints": ["Schule", "Abend", "Stress", "Vergessen"]},
+      {"word": "Wäsche waschen", "hints": ["Haushalt", "Wochenende", "Routine", "Maschine"]},
+      {"word": "Pendeln", "hints": ["Arbeit", "Morgens", "Stress", "Zeit"]},
+      {"word": "Kochen", "hints": ["Küche", "Abend", "Hunger", "Übung"]},
+      {"word": "Zahnarzt", "hints": ["Termin", "Angst", "Schmerz", "Warten"]},
+      {"word": "Wecker klingelt", "hints": ["Morgen", "Nervig", "Schlaf", "Alltag"]},
+      {"word": "Parkplatzsuche", "hints": ["Auto", "Stadt", "Stress", "Voll"]},
+      {"word": "Steuererklärung", "hints": ["Papier", "Frist", "Geld", "Nervig"]},
+      {"word": "Kaffee", "hints": ["Morgens", "Gewohnheit", "Pause", "Büro"]},
+      {"word": "WLAN", "hints": ["Internet", "Zuhause", "Technik", "Langsam"]},
+      {"word": "Handy laden", "hints": ["Abend", "Kabel", "Strom", "Vergessen"]}
+    ]
+  },
+  {
+    "id": -5,
+    "name": "Clash Royale",
+    "isDefault": true,
+    "words": [
+      {"word": "Prinz", "hints": ["Offensiv", "Lane", "Konter", "Charge"]},
+      {"word": "P.E.K.K.A", "hints": ["Teuer", "Stark", "Langsam", "Boden"]},
+      {"word": "Goblin Barrel", "hints": ["Günstig", "Überraschung", "Wurf", "Turm"]},
+      {"word": "Hog Rider", "hints": ["Schnell", "Angriff", "Beliebt", "Brücke"]},
+      {"word": "Valkyrie", "hints": ["Boden", "Verteidigung", "Mitte", "Nahkampf"]},
+      {"word": "Mega Knight", "hints": ["Teuer", "Boden", "Stark", "Nervig"]},
+      {"word": "Skeleton Army", "hints": ["Schwarm", "Billig", "Defensiv", "Masse"]},
+      {"word": "Wizard", "hints": ["Fernkampf", "Mitte", "Splash", "Zerbrechlich"]},
+      {"word": "Balloon", "hints": ["Luft", "Turm", "Langsam", "Push"]},
+      {"word": "Electro Giant", "hints": ["Teuer", "Groß", "Tank", "Selten"]},
+      {"word": "Royal Giant", "hints": ["Turm", "Fernkampf", "Groß", "Nervig"]},
+      {"word": "Inferno Tower", "hints": ["Gebäude", "Defensiv", "Mitte", "Timer"]},
+      {"word": "Golem", "hints": ["Teuer", "Tank", "Langsam", "Groß"]},
+      {"word": "Bandit", "hints": ["Schnell", "Brücke", "Günstig", "Offensiv"]},
+      {"word": "Elixir Collector", "hints": ["Gebäude", "Investition", "Risiko", "Vorteil"]}
+    ]
+  },
+  {
+    "id": -6,
+    "name": "Tiere & Natur",
+    "isDefault": true,
+    "words": [
+      {"word": "Chamäleon", "hints": ["Reptil", "Tropen", "Augen", "Anpassung"]},
+      {"word": "Delfin", "hints": ["Meer", "Warm", "Gruppe", "Intelligent"]},
+      {"word": "Kolibri", "hints": ["Klein", "Tropisch", "Bunt", "Schnell"]},
+      {"word": "Faultier", "hints": ["Baum", "Langsam", "Tropisch", "Grün"]},
+      {"word": "Löwe", "hints": ["Afrika", "Stark", "Groß", "Gefährlich"]},
+      {"word": "Hai", "hints": ["Meer", "Angst", "Groß", "Film"]},
+      {"word": "Adler", "hints": ["Himmel", "Groß", "Schnell", "Majestätisch"]},
+      {"word": "Schildkröte", "hints": ["Alt", "Langsam", "Strand", "Meer"]},
+      {"word": "Vulkanausbruch", "hints": ["Berg", "Flucht", "Rauch", "Hitze"]},
+      {"word": "Regenbogen", "hints": ["Himmel", "Farben", "Selten", "Natur"]},
+      {"word": "Tornado", "hints": ["Wind", "Gefahr", "Zerstörung", "Amerika"]},
+      {"word": "Korallenriff", "hints": ["Meer", "Bunt", "Warm", "Tiere"]},
+      {"word": "Glühwürmchen", "hints": ["Nacht", "Sommer", "Wiese", "Klein"]},
+      {"word": "Oktopus", "hints": ["Meer", "Intelligent", "Weich", "Verstecken"]},
+      {"word": "Mammutbaum", "hints": ["Groß", "Alt", "Natur", "Amerika"]}
+    ]
+  },
+  {
+    "id": -7,
+    "name": "Sport & Freizeit",
+    "isDefault": true,
+    "words": [
+      {"word": "Bungee-Jumping", "hints": ["Höhe", "Angst", "Adrenalin", "Urlaub"]},
+      {"word": "Tischtennis", "hints": ["Klein", "Schnell", "Keller", "Wettbewerb"]},
+      {"word": "Snowboarden", "hints": ["Winter", "Berg", "Schnell", "Urlaub"]},
+      {"word": "Bowling", "hints": ["Gruppe", "Abend", "Spaß", "Punkte"]},
+      {"word": "Yoga", "hints": ["Ruhe", "Körper", "Trend", "Morgens"]},
+      {"word": "Klettern", "hints": ["Höhe", "Kraft", "Indoor", "Mut"]},
+      {"word": "Darts", "hints": ["Abend", "Pub", "Punkte", "Präzision"]},
+      {"word": "Surfen", "hints": ["Wasser", "Sommer", "Strand", "Gleichgewicht"]},
+      {"word": "Escape Room", "hints": ["Gruppe", "Stress", "Team", "Indoor"]},
+      {"word": "Fallschirmspringen", "hints": ["Höhe", "Angst", "Adrenalin", "Luft"]},
+      {"word": "Paintball", "hints": ["Gruppe", "Draußen", "Schmerz", "Team"]},
+      {"word": "Tauchen", "hints": ["Wasser", "Tief", "Urlaub", "Ausrüstung"]},
+      {"word": "Kartfahren", "hints": ["Schnell", "Runden", "Indoor", "Wettbewerb"]},
+      {"word": "Angeln", "hints": ["Wasser", "Geduld", "Ruhe", "Draußen"]},
+      {"word": "Trampolin", "hints": ["Kinder", "Garten", "Spaß", "Bewegung"]}
+    ]
+  },
+  {
+    "id": -8,
+    "name": "Wissen & Schule",
+    "isDefault": true,
+    "words": [
+      {"word": "Periodensystem", "hints": ["Chemie", "Tabelle", "Ordnung", "Unterricht"]},
+      {"word": "Photosynthese", "hints": ["Biologie", "Grün", "Prozess", "Schule"]},
+      {"word": "Pythagoras", "hints": ["Mathe", "Formel", "Griechenland", "Antik"]},
+      {"word": "Sonnensystem", "hints": ["Weltraum", "Groß", "Wissenschaft", "Schule"]},
+      {"word": "Evolution", "hints": ["Biologie", "Zeit", "Veränderung", "Theorie"]},
+      {"word": "Taschenrechner", "hints": ["Mathe", "Schule", "Zahlen", "Gerät"]},
+      {"word": "Mikroskop", "hints": ["Biologie", "Labor", "Klein", "Gerät"]},
+      {"word": "Vokabeltest", "hints": ["Sprache", "Schule", "Stress", "Lernen"]},
+      {"word": "Klassenfahrt", "hints": ["Schule", "Reise", "Gruppe", "Spaß"]},
+      {"word": "Referat", "hints": ["Schule", "Vorbereitung", "Aufregung", "Note"]},
+      {"word": "Gymnasium", "hints": ["Schule", "Bildung", "Jugend", "Deutschland"]},
+      {"word": "Klausur", "hints": ["Schule", "Stress", "Note", "Zeit"]},
+      {"word": "Weltkarte", "hints": ["Geographie", "Bunt", "Wand", "Länder"]},
+      {"word": "Dinosaurier", "hints": ["Ausgestorben", "Groß", "Film", "Kinder"]},
+      {"word": "Schwarzes Loch", "hints": ["Weltraum", "Physik", "Geheimnisvoll", "Theorie"]}
+    ]
+  },
+  {
+    "id": -9,
+    "name": "Feste & Feiern",
+    "isDefault": true,
+    "words": [
+      {"word": "Silvester", "hints": ["Dezember", "Nacht", "Laut", "Feier"]},
+      {"word": "Weihnachten", "hints": ["Winter", "Familie", "Dezember", "Tradition"]},
+      {"word": "Halloween", "hints": ["Oktober", "Verkleidung", "Nacht", "Gruselig"]},
+      {"word": "Karneval", "hints": ["Verkleidung", "Feiern", "Bunt", "Tradition"]},
+      {"word": "Geburtstag", "hints": ["Feier", "Datum", "Persönlich", "Einmal im Jahr"]},
+      {"word": "Hochzeit", "hints": ["Liebe", "Feier", "Kleidung", "Sommer"]},
+      {"word": "Ostern", "hints": ["Frühling", "Feiertag", "Sonntag", "Familie"]},
+      {"word": "Valentinstag", "hints": ["Februar", "Liebe", "Kommerz", "Paar"]},
+      {"word": "Abiturfeier", "hints": ["Schule", "Ende", "Sommer", "Feier"]},
+      {"word": "Kindergeburtstag", "hints": ["Kinder", "Kuchen", "Spiele", "Laut"]},
+      {"word": "Firmenweihnachtsfeier", "hints": ["Arbeit", "Dezember", "Peinlich", "Kollegen"]},
+      {"word": "Taufe", "hints": ["Kirche", "Baby", "Familie", "Zeremonie"]},
+      {"word": "Einschulung", "hints": ["Kinder", "Neu", "Aufregung", "Herbst"]},
+      {"word": "Polterabend", "hints": ["Feier", "Laut", "Tradition", "Freunde"]},
+      {"word": "Nikolaus", "hints": ["Dezember", "Kinder", "Tradition", "Süßes"]}
+    ]
+  },
+  {
+    "id": -10,
+    "name": "Stars und Promis",
+    "isDefault": true,
+    "words": [
+      {"word": "Cristiano Ronaldo", "hints": ["Sport", "Reich", "Berühmt", "Europa"]},
+      {"word": "Taylor Swift", "hints": ["Musik", "Fans", "Stadion", "Amerika"]},
+      {"word": "Elon Musk", "hints": ["Technik", "Reich", "Kontrovers", "Unternehmer"]},
+      {"word": "MrBeast", "hints": ["Internet", "Geld", "Jung", "Amerika"]},
+      {"word": "Lionel Messi", "hints": ["Sport", "Klein", "Südamerika", "Titel"]},
+      {"word": "Billie Eilish", "hints": ["Musik", "Jung", "Stil", "Amerika"]},
+      {"word": "Dwayne Johnson", "hints": ["Film", "Muskeln", "Action", "Amerika"]},
+      {"word": "Kim Kardashian", "hints": ["Reality", "Mode", "Berühmt", "Familie"]},
+      {"word": "Knossi", "hints": ["Internet", "Laut", "Deutsch", "Unterhaltung"]},
+      {"word": "Capital Bra", "hints": ["Musik", "Deutsch", "Jung", "Charts"]},
+      {"word": "Shirin David", "hints": ["Musik", "Deutsch", "Internet", "Mode"]},
+      {"word": "Khaby Lame", "hints": ["Internet", "Viral", "Lustig", "Kurz"]},
+      {"word": "Sido", "hints": ["Musik", "Deutsch", "Rap", "Klassiker"]},
+      {"word": "Mark Zuckerberg", "hints": ["Technik", "Internet", "Reich", "Kontrovers"]},
+      {"word": "Ariana Grande", "hints": ["Musik", "Stimme", "Amerika", "Pop"]}
+    ]
+  },
+  {
+    "id": -11,
+    "name": "Spicy",
+    "isDefault": true,
+    "words": [
+      {"word": "Flaschendrehen", "hints": ["Kreis", "Party", "Zufall", "Jugend"]},
+      {"word": "Strip Poker", "hints": ["Karten", "Glück", "Peinlich", "Erwachsene"]},
+      {"word": "Nacktbaden", "hints": ["Sommer", "See", "Mut", "Verboten"]},
+      {"word": "Masturbieren", "hints": ["Schlafzimmer", "Privat", "Türschloss"]},
+      {"word": "One Night Stand", "hints": ["Nacht", "Vergessen", "Alkohol", "Peinlich"]},
+      {"word": "Dreier", "hints": ["Film", "Erwachsene", "Gruppe"]},
+      {"word": "Fremdgehen", "hints": ["Beziehung", "Vertrauen", "Geheimnis", "Schmerz"]},
+      {"word": "Sexspielzeug", "hints": ["Erwachsene", "Privat", "Laden"]},
+      {"word": "Swingerclub", "hints": ["Paare", "Nacht", "Erwachsene"]},
+      {"word": "Pornodarsteller", "hints": ["Film",  "Erwachsene", "Beruf"]},
+      {"word": "Bondage", "hints": ["Erwachsene", "Intim", "Ausrüstung"]},
+      {"word": "Camgirl", "hints": ["Internet", "Erwachsene", "Geld"]},
+      {"word": "Fetisch", "hints": ["Interesse", "Vielfalt", "Privat"]}
+    ]
+  },
+  {
+    "id": -12,
+    "name": "Trends",
+    "isDefault": true,
+    "words": [
+      {"word": "Künstliche Intelligenz", "hints": ["Technik", "Zukunft", "Debatte", "Angst"]},
+      {"word": "Elektroauto", "hints": ["Umwelt", "Technik", "Zukunft", "Teuer"]},
+      {"word": "Veganismus", "hints": ["Essen", "Trend", "Ethik", "Umwelt"]},
+      {"word": "Influencer", "hints": ["Internet", "Werbung", "Jung", "Lifestyle"]},
+      {"word": "Kryptowährung", "hints": ["Digital", "Risiko", "Geld", "Technik"]},
+      {"word": "Tiny House", "hints": ["Wohnen", "Klein", "Trend", "Natur"]},
+      {"word": "Podcast", "hints": ["Audio", "Unterwegs", "Trend", "Themen"]},
+      {"word": "Smoothie Bowl", "hints": ["Essen", "Gesund", "Trend", "Frühstück"]},
+      {"word": "VR-Brille", "hints": ["Technik", "Zukunft", "Spielen", "Teuer"]},
+      {"word": "E-Scooter", "hints": ["Stadt", "Verkehr", "Umwelt", "Nervig"]},
+      {"word": "Drohne", "hints": ["Luft", "Technik", "Kamera", "Hobby"]},
+      {"word": "Nachhaltigkeit", "hints": ["Umwelt", "Trend", "Bewusstsein", "Zukunft"]},
+      {"word": "Home Office", "hints": ["Arbeit", "Zuhause", "Bequem", "Pandemie"]},
+      {"word": "Selfie", "hints": ["Handy", "Foto", "Trend", "Sozial"]},
+      {"word": "True Crime", "hints": ["Medien", "Spannung", "Hobby", "Nacht"]}
+    ]
+  },
+  {
+    "id": -13,
+    "name": "Deutsche Begriffe",
+    "isDefault": true,
+    "words": [
+      {"word": "Feierabend", "hints": ["Arbeit", "Freitag", "Deutsch", "Freiheit"]},
+      {"word": "Schützenfest", "hints": ["Dorf", "Tradition", "Sommer", "Verein"]},
+      {"word": "Wanderlust", "hints": ["Natur", "Deutsch", "Draußen", "Bewegung"]},
+      {"word": "Kindergarten", "hints": ["Kinder", "Morgens", "Deutsch", "Betreuung"]},
+      {"word": "Autobahn", "hints": ["Verkehr", "Schnell", "Deutschland", "Reise"]},
+      {"word": "Schrebergarten", "hints": ["Natur", "Verein", "Sommer", "Klein"]},
+      {"word": "Stammtisch", "hints": ["Abend", "Freunde", "Gespräch", "Regelmäßig"]},
+      {"word": "Kehrwoche", "hints": ["Nachbarn", "Sauber", "Pflicht", "Streit"]},
+      {"word": "Abendbrot", "hints": ["Abend", "Essen", "Tradition", "Einfach"]},
+      {"word": "Pfand", "hints": ["Geld", "Rückgabe", "System", "Deutschland"]},
+      {"word": "Sonntagsbraten", "hints": ["Sonntag", "Familie", "Tradition", "Mittag"]},
+      {"word": "Kaffee und Kuchen", "hints": ["Nachmittag", "Besuch", "Tradition", "Gemütlich"]},
+      {"word": "GEZ", "hints": ["Geld", "Monatlich", "Pflicht", "Deutschland"]},
+      {"word": "Mülltrennung", "hints": ["Umwelt", "Pflicht", "Deutschland", "System"]},
+      {"word": "Spargelsaison", "hints": ["Frühling", "Essen", "Deutschland", "Kurz"]}
     ]
   }
 ]
