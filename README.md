@@ -1,9 +1,5 @@
 # FakeIt
 
-<p align="center">
-  <img src="icons/main.png" alt="FakeIt Logo" width="200">
-</p>
-
 **FakeIt** ist ein Social-Deduction-Partyspiel als Progressive Web App (PWA). Inspiriert von Spielen wie *Spyfall* und *Among Us* versuchen Crewmates den Impostor zu entlarven, der das geheime Wort nicht kennt.
 
 <p align="center">
