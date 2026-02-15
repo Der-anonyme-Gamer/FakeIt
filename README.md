@@ -134,17 +134,17 @@ Die App enthält 13 vorgefertigte Kategorien:
 
 | Kategorie | Beschreibung |
 |---|---|
-| Einfache Woerter | Alltagsgegenstaende |
-| Rund um die Welt | Sehenswuerdigkeiten & Orte |
+| Einfache Wörter | Alltagsgegenstände |
+| Rund um die Welt | Sehenswürdigkeiten & Orte |
 | Unterhaltung | Filme, Spiele, Serien |
 | Alltag | Alltagssituationen |
 | Clash Royale | Karten aus dem Spiel |
-| Tiere & Natur | Tiere und Naturphaenomene |
+| Tiere & Natur | Tiere und Naturphänomene |
 | Sport & Freizeit | Sportarten und Aktivitaeten |
 | Wissen & Schule | Schulthemen und Wissenschaft |
-| Feste & Feiern | Feiertage und Anlaesse |
-| Stars und Promis | Beruehmte Persoenlichkeiten |
-| Spicy (Ue18) | Party-Begriffe fuer Erwachsene |
+| Feste & Feiern | Feiertage und Anlässe |
+| Stars und Promis | Berühmte Persönlichkeiten |
+| Spicy (Ü18) | Party-Begriffe für Erwachsene |
 | Trends | Aktuelle Trends und Technologie |
 | Deutsche Begriffe | Typisch deutsche Konzepte |
 
