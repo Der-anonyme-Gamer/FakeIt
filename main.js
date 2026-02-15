@@ -61,16 +61,38 @@ async function loadPage(forceReload = false) {
       existingScript.remove();
     }
 
-    // Neues Script laden mit Cache-Busting (?t=timestamp),
-    // damit der Browser bei Seitenwechsel immer frischen Code ausfuehrt
+    // Neues Script laden
+    // Cache-Busting (?t=...) wurde entfernt, damit der Service-Worker
+    // die Datei auch offline aus dem Cache bedienen kann.
     const script = document.createElement('script');
-    script.src = scriptPath + '?t=' + Date.now();
+    script.src = scriptPath;
     script.id = "dynamic-script";
+    
+    // Warten bis das Script geladen ist, dann Initialisierungsfunktion aufrufen
+    script.onload = () => {
+         initializePage(hash);
+    };
     document.body.appendChild(script);
+
   } catch (err) {
     PageNotFound();
   }
 }
+
+/**
+ * Ruft die Initialisierungsfunktion der jeweiligen Seite auf,
+ * falls diese global verfuegbar gemacht wurde.
+ */
+function initializePage(hash) {
+    if (hash === 'newgame' && typeof window.initNewGame === 'function') {
+        window.initNewGame();
+    } else if (hash === 'categories' && typeof window.initCategories === 'function') {
+        window.initCategories();
+    } else if (hash === 'game' && typeof window.initGame === 'function') {
+        window.initGame();
+    }
+}
+
 
 /**
  * Zeigt die 404-Fehlerseite an.

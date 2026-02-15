@@ -21,7 +21,7 @@
  *
  * In IIFE gewrappt, um Variablenkonflikte bei SPA-Seitenwechsel zu vermeiden.
  */
-(function() {
+window.initGame = function() {
 
 // --- DOM-Elemente ---
 
@@ -328,4 +328,4 @@ function updateView(name, role, word, hint) {
   }
 }
 
-})();
+}; // Ende von initGame

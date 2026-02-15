@@ -10,7 +10,7 @@
  */
 
 /** Cache-Versionsname - bei App-Updates erhoehen */
-const CACHE_NAME = 'fakeit-v3';
+const CACHE_NAME = 'fakeit-v5';
 
 /** Alle Dateien, die fuer den Offline-Betrieb gecacht werden */
 const ASSETS_TO_CACHE = [
