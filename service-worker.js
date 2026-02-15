@@ -5,12 +5,12 @@
  * ersten Laden im Browser-Cache gespeichert. Nachfolgende Anfragen werden
  * direkt aus dem Cache bedient, ohne Netzwerkzugriff.
  *
- * Bei einem Update der App muss CACHE_NAME geaendert werden (z.B. 'fakeit-v3'),
+ * Bei einem Update der App muss CACHE_NAME geaendert werden (z.B. 'fakeit-v2.0.0'),
  * damit der alte Cache geloescht und die neuen Dateien heruntergeladen werden.
  */
 
 /** Cache-Versionsname - bei App-Updates erhoehen */
-const CACHE_NAME = 'fakeit-v5';
+const CACHE_NAME = 'fakeit-v2.0.0';
 
 /** Alle Dateien, die fuer den Offline-Betrieb gecacht werden */
 const ASSETS_TO_CACHE = [
@@ -103,3 +103,4 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+

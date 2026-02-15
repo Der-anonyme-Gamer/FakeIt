@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.der_anonyme_gamer.twa",
-        "sha256_cert_fingerprints": ["C2:04:F4:68:0F:C4:82:F2:69:42:B6:58:C1:03:61:ED:65:9B:68:BE:52:13:0F:2B:10:FA:F0:CB:20:4C:23:7B"]
-      }
-    }]

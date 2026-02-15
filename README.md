@@ -20,7 +20,7 @@
 
 1. **Spieler hinzufügen** - Mindestens 3 Spieler, Impostor-Anzahl und Kategorien festlegen
 2. **Rollen ansehen** - Jeder Spieler zieht das Bild nach oben, um seine Rolle zu sehen. Crewmates sehen das geheime Wort, Impostors nicht (oder nur einen vagen Hinweis)
-3. **Diskutieren** - Alle diskutieren reihum ueber das Wort. Crewmates versuchen den Impostor zu entlarven, der Impostor tut so, als kennt er das Wort
+3. **Diskutieren** - Alle diskutieren reihum über das Wort. Crewmates versuchen den Impostor zu entlarven, der Impostor tut so, als kennt er das Wort
 4. **Abstimmen** - Nach Ablauf der Zeit wird abgestimmt, wer der Impostor ist
 5. **Ergebnis** - Die Impostors werden aufgedeckt. Crewmates gewinnen, wenn sie den Impostor finden. Der Impostor gewinnt, wenn er unentdeckt bleibt
 <p align="center">
@@ -126,7 +126,7 @@ npx serve .
 # VS Code: "Live Server" Extension verwenden
 ```
 
-Dann im Browser oeffnen: `http://localhost:8080`
+Dann im Browser öffnen: `http://localhost:8080`
 
 ## Kategorien
 
@@ -134,17 +134,17 @@ Die App enthält 13 vorgefertigte Kategorien:
 
 | Kategorie | Beschreibung |
 |---|---|
-| Einfache Woerter | Alltagsgegenstaende |
-| Rund um die Welt | Sehenswuerdigkeiten & Orte |
+| Einfache Wörter | Alltagsgegenstände |
+| Rund um die Welt | Sehenswürdigkeiten & Orte |
 | Unterhaltung | Filme, Spiele, Serien |
 | Alltag | Alltagssituationen |
 | Clash Royale | Karten aus dem Spiel |
-| Tiere & Natur | Tiere und Naturphaenomene |
-| Sport & Freizeit | Sportarten und Aktivitaeten |
+| Tiere & Natur | Tiere und Naturphänomene |
+| Sport & Freizeit | Sportarten und Aktivitäten |
 | Wissen & Schule | Schulthemen und Wissenschaft |
-| Feste & Feiern | Feiertage und Anlaesse |
-| Stars und Promis | Beruehmte Persoenlichkeiten |
-| Spicy (Ue18) | Party-Begriffe fuer Erwachsene |
+| Feste & Feiern | Feiertage und Anlässe |
+| Stars und Promis | Berühmte Persönlichkeiten |
+| Spicy (Ü18) | Party-Begriffe für Erwachsene |
 | Trends | Aktuelle Trends und Technologie |
 | Deutsche Begriffe | Typisch deutsche Konzepte |
 
@@ -156,7 +156,7 @@ Alle Icons stammen von [Flaticon](https://www.flaticon.com) und wurden von versc
 
 ## Lizenz
 
-Dieses Projekt ist unter der **Apache License 2.0** lizenziert. Siehe [LICENSE](LICENSE) fuer Details.
+Dieses Projekt ist unter der **Apache License 2.0** lizenziert. Siehe [LICENSE](LICENSE) für Details.
 
 ---
 
