@@ -14,7 +14,7 @@
  *
  * In IIFE gewrappt, um Variablenkonflikte bei SPA-Seitenwechsel zu vermeiden.
  */
-(function() {
+window.initCategories = function() {
 
 // --- Zustandsvariablen ---
 
@@ -453,4 +453,4 @@ window.viewCategory = viewCategory;
 window.deleteCategory = deleteCategory;
 window.showConfirmPopup = showConfirmPopup;
 
-})();
+}; // Ende von initCategories

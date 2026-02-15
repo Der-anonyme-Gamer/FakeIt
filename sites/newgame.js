@@ -14,7 +14,7 @@
  *
  * In IIFE gewrappt, um Variablenkonflikte bei SPA-Seitenwechsel zu vermeiden.
  */
-(function() {
+window.initNewGame = function() {
 
 // --- DOM-Elemente ---
 
@@ -519,4 +519,4 @@ function startGame() {
 window.closePopup = closePopup;
 window.saveSelectedCategories = saveSelectedCategories;
 
-})();
+}; // Ende von initNewGame
